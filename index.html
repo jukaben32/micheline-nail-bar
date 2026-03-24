@@ -1,570 +1,2310 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Micheline Nail Bar & Beauty Lounge — Tu lugar perfecto para mimarte</title>
-  <meta name="description" content="Experiencia de belleza de lujo en San Pedro de Macorís y Boca Chica. Reserva tu cita para uñas acrílicas, peluquería, pedispa y depilación." />
-  
-  <meta property="og:title" content="Micheline Nail Bar & Beauty Lounge" />
-  <meta property="og:description" content="Una experiencia de belleza de lujo en San Pedro de Macorís y Boca Chica." />
-  <meta property="og:url" content="https://michelinenailbar.com" />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#080808" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BeautySalon",
-    "name": "Micheline Nail Bar & Beauty Lounge",
-    "url": "https://michelinenailbar.com",
-    "priceRange": "$$",
-    "address": [
-      {
-        "@type": "PostalAddress",
-        "addressLocality": "San Pedro de Macorís",
-        "addressCountry": "DO"
-      },
-      {
-        "@type": "PostalAddress",
-        "addressLocality": "Boca Chica",
-        "addressCountry": "DO"
-      }
-    ],
-    "telephone": "+18096277471"
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Micheline Nail Bar & Beauty Lounge — Tu lugar perfecto para mimarte</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #080808;
+    --black2: #0f0f0f;
+    --black3: #161616;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dim: #7a6130;
+    --cream: #f5ede0;
+    --white: #ffffff;
+    --grey: #555;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Jost', sans-serif;
   }
-  </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="./style.css" />
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: var(--font-body);
+    font-weight: 300;
+    overflow-x: hidden;
+    
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed; width: 8px; height: 8px;
+    background: var(--gold); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transition: transform 0.15s ease;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring {
+    position: fixed; width: 36px; height: 36px;
+    border: 1px solid var(--gold-dim); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transition: transform 0.4s ease, opacity 0.3s;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+  }
+  a, button {  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1; opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.5rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(8,8,8,0.95), transparent);
+    transition: background 0.4s;
+  }
+  nav.scrolled { background: rgba(8,8,8,0.97); border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-weight: 300; letter-spacing: 0.15em;
+    color: var(--gold); text-decoration: none;
+  }
+  .nav-logo span { font-style: italic; color: var(--cream); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--cream); text-decoration: none; opacity: 0.7;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+  .nav-cta {
+    padding: 0.6rem 1.8rem;
+    border: 1px solid var(--gold);
+    color: var(--gold); text-decoration: none;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--black); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 60% 40%, #1a1408 0%, var(--black) 70%);
+  }
+  .hero-lines {
+    position: absolute; inset: 0; overflow: hidden;
+  }
+  .hero-lines::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    width: 700px; height: 700px;
+    border: 1px solid rgba(201,168,76,0.07);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-ring 6s ease-in-out infinite;
+  }
+  .hero-lines::after {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    width: 500px; height: 500px;
+    border: 1px solid rgba(201,168,76,0.05);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-ring 6s ease-in-out infinite 1s;
+  }
+  @keyframes pulse-ring {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+  }
+  .hero-gold-line {
+    position: absolute; top: 0; right: 25%;
+    width: 1px; height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--gold-dim), transparent);
+    opacity: 0.3;
+  }
+  .hero-content {
+    position: relative; z-index: 2; text-align: center;
+    padding: 0 2rem;
+  }
+  .hero-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 1s 0.3s forwards;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 9vw, 8rem);
+    font-weight: 300; line-height: 1;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.2em;
+    opacity: 0; animation: fadeUp 1s 0.5s forwards;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-weight: 300; font-style: italic;
+    color: rgba(245,237,224,0.5);
+    margin-bottom: 3rem;
+    opacity: 0; animation: fadeUp 1s 0.7s forwards;
+  }
+  .hero-ctas {
+    display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 1s 0.9s forwards;
+  }
+  .btn-primary {
+    padding: 1rem 3rem;
+    background: var(--gold);
+    color: var(--black); text-decoration: none;
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 20px 40px rgba(201,168,76,0.3); }
+  .btn-outline {
+    padding: 1rem 3rem;
+    border: 1px solid rgba(245,237,224,0.3);
+    color: var(--cream); text-decoration: none;
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold-dim); opacity: 0; animation: fadeIn 1s 1.5s forwards;
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold-dim), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+  /* STATS */
+  .stats-bar {
+    background: var(--black3);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 2.5rem 4rem;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    text-align: center; gap: 2rem;
+  }
+  .stat-item { position: relative; }
+  .stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    height: 40px; width: 1px; background: rgba(201,168,76,0.2);
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.5rem; font-weight: 300;
+    color: var(--gold); display: block;
+  }
+  .stat-label {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    opacity: 0.5; margin-top: 0.3rem;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 8rem 4rem; }
+  .section-label {
+    font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300; line-height: 1.1;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .gold-divider {
+    width: 60px; height: 1px; background: var(--gold);
+    margin: 2rem 0;
+  }
+
+  /* ABOUT */
+  #about {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8rem;
+    align-items: center;
+  }
+  .about-text p {
+    font-size: 1rem; line-height: 1.8; opacity: 0.7;
+    margin-bottom: 1.5rem;
+  }
+  .about-image {
+    position: relative; aspect-ratio: 3/4; overflow: hidden;
+  }
+  .about-image-inner {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #1a1408 0%, #0d0d0d 50%, #1a0f05 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-image-text {
+    font-family: var(--font-display);
+    font-size: 5rem; color: rgba(201,168,76,0.1);
+    font-style: italic;
+  }
+  .about-image::before {
+    content: '';
+    position: absolute; top: -20px; right: -20px;
+    width: 80%; height: 80%; border: 1px solid rgba(201,168,76,0.2);
+    z-index: -1;
+  }
+  .about-image::after {
+    content: '';
+    position: absolute; bottom: -20px; left: -20px;
+    width: 80%; height: 80%; border: 1px solid rgba(201,168,76,0.1);
+    z-index: -1;
+  }
+
+  /* SERVICES */
+  #services { background: var(--black2); }
+  .services-header { text-align: center; margin-bottom: 5rem; }
+  .services-header .gold-divider { margin: 2rem auto; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .service-card {
+    background: var(--black3);
+    padding: 3rem 2.5rem;
+    border: 1px solid rgba(201,168,76,0.05);
+    transition: all 0.4s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .service-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon {
+    font-size: 2rem; margin-bottom: 1.5rem; display: block;
+  }
+  .service-name {
+    font-family: var(--font-display);
+    font-size: 1.6rem; font-weight: 400; margin-bottom: 0.5rem;
+  }
+  .service-desc { font-size: 0.8rem; opacity: 0.5; line-height: 1.6; margin-bottom: 1.5rem; }
+  .service-price-range {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* PRICE LIST */
+  #pricing { background: var(--black); }
+  .pricing-intro { text-align: center; margin-bottom: 5rem; }
+  .pricing-intro .gold-divider { margin: 2rem auto; }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .price-category { }
+  .price-cat-title {
+    font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem; padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .price-item {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 0.9rem;
+  }
+  .price-item-name { opacity: 0.8; }
+  .price-item-dots {
+    flex: 1; margin: 0 0.8rem; height: 1px;
+    border-bottom: 1px dotted rgba(201,168,76,0.2);
+    position: relative; top: -3px;
+  }
+  .price-item-value {
+    font-family: var(--font-display);
+    font-size: 1.05rem; color: var(--gold-light); white-space: nowrap;
+  }
+
+  /* BOOKING */
+  #booking {
+    background: linear-gradient(135deg, #0a0905 0%, var(--black) 50%, #0a0905 100%);
+    position: relative; overflow: hidden;
+  }
+  #booking::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+  }
+  .booking-inner {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 8rem;
+    align-items: start; position: relative; z-index: 2;
+  }
+  .booking-info p { font-size: 0.95rem; line-height: 1.8; opacity: 0.6; margin-bottom: 2rem; }
+  .booking-detail {
+    display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;
+  }
+  .booking-detail-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+  .booking-detail-text { font-size: 0.85rem; opacity: 0.7; line-height: 1.6; }
+  .booking-detail-text strong { display: block; color: var(--gold); font-weight: 400; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.2rem; }
+
+  .booking-form { }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label {
+    display: block; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.6rem;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 0.9rem 1.2rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--cream); font-family: var(--font-body); font-size: 0.9rem; font-weight: 300;
+    outline: none; transition: border-color 0.3s;
+    -webkit-appearance: none;
+  }
+  .form-group select option { background: #111; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%; padding: 1.1rem;
+    background: var(--gold); border: none;
+    color: var(--black); font-family: var(--font-body);
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
+    transition: all 0.3s; margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold-light); box-shadow: 0 10px 30px rgba(201,168,76,0.3); }
+  .form-note { font-size: 0.65rem; opacity: 0.4; text-align: center; margin-top: 1rem; }
+  .form-success {
+    display: none; text-align: center; padding: 3rem 2rem;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+  .form-success .check { font-size: 3rem; margin-bottom: 1rem; }
+  .form-success h3 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; color: var(--gold); margin-bottom: 0.5rem; }
+  .form-success p { opacity: 0.6; font-size: 0.9rem; }
+
+  /* GALLERY */
+  #gallery { background: var(--black2); }
+  .gallery-header { text-align: center; margin-bottom: 4rem; }
+  .gallery-header .gold-divider { margin: 2rem auto; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 3px; max-width: 1200px; margin: 0 auto 3rem;
+  }
+  .gallery-item {
+    aspect-ratio: 1; overflow: hidden; position: relative;
+    background: var(--black3);
+    
+  }
+  .gallery-item:first-child { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+  .gallery-placeholder {
+    width: 100%; height: 100%; min-height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #111 0%, #1a1408 100%);
+    transition: transform 0.5s; font-size: 2rem;
+    flex-direction: column; gap: 0.5rem;
+  }
+  .gallery-item:hover .gallery-placeholder { transform: scale(1.05); }
+  .gallery-placeholder span { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.3; }
+  .gallery-cta { text-align: center; }
+
+  /* SHOP TEASER */
+  #shop {
+    background: var(--black3);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    text-align: center; padding: 6rem 4rem;
+  }
+  .shop-inner { max-width: 700px; margin: 0 auto; }
+  .shop-inner .section-title { margin-bottom: 1.5rem; }
+  .shop-inner p { opacity: 0.6; margin-bottom: 3rem; font-size: 1rem; line-height: 1.8; }
+  .shop-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    max-width: 900px; margin: 0 auto 3rem;
+  }
+  .shop-card {
+    padding: 2rem; border: 1px solid rgba(201,168,76,0.1);
+    text-align: center; transition: all 0.3s;
+  }
+  .shop-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.03); }
+  .shop-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .shop-card-name { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.3rem; }
+  .shop-card-desc { font-size: 0.75rem; opacity: 0.5; }
+
+  /* NEWSLETTER */
+  #newsletter { background: var(--black); text-align: center; padding: 6rem 4rem; }
+  .newsletter-inner { max-width: 600px; margin: 0 auto; }
+  .newsletter-inner .section-title { margin-bottom: 1rem; }
+  .newsletter-inner p { opacity: 0.6; margin-bottom: 3rem; }
+  .newsletter-form { display: flex; gap: 0; max-width: 500px; margin: 0 auto; }
+  .newsletter-form input {
+    flex: 1; padding: 1rem 1.5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.2); border-right: none;
+    color: var(--cream); font-family: var(--font-body);
+    font-size: 0.9rem; outline: none;
+    transition: border-color 0.3s;
+  }
+  .newsletter-form input:focus { border-color: var(--gold); }
+  .newsletter-form input::placeholder { opacity: 0.4; }
+  .newsletter-form button {
+    padding: 1rem 2rem;
+    background: var(--gold); border: 1px solid var(--gold);
+    color: var(--black); font-family: var(--font-body);
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    white-space: nowrap; transition: all 0.3s;
+  }
+  .newsletter-form button:hover { background: var(--gold-light); }
+
+  /* CHAT WIDGET */
+  .chat-fab {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 9990;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #25D366; border: none;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 30px rgba(37,211,102,0.45);
+    animation: wa-pulse 3s ease-in-out infinite;
+    transition: transform 0.3s, background 0.3s;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .chat-fab:hover { transform: scale(1.1); }
+  .chat-fab svg { width: 28px; height: 28px; fill: white; transition: transform 0.3s; }
+  .chat-fab.open svg.wa-icon { display: none; }
+  .chat-fab .close-icon { display: none; font-size: 1.4rem; color: white; }
+  .chat-fab.open .close-icon { display: block; }
+  .chat-fab.open { animation: none; background: #128C7E; }
+  @keyframes wa-pulse {
+    0%,100% { box-shadow: 0 8px 30px rgba(37,211,102,0.4); }
+    50%      { box-shadow: 0 8px 50px rgba(37,211,102,0.7); }
+  }
+  /* Notif badge */
+  .chat-badge {
+    position: absolute; top: -4px; right: -4px;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--gold); color: var(--black);
+    font-size: 0.65rem; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    animation: badge-pop 0.5s 2s both;
+  }
+  @keyframes badge-pop { from{transform:scale(0)} to{transform:scale(1)} }
+  /* Chat window */
+  .chat-window {
+    position: fixed; bottom: 5.5rem; right: 2rem; z-index: 9989;
+    width: 340px;
+    background: #0d0d0d;
+    border: 1px solid rgba(37,211,102,0.25);
+    border-radius: 16px 16px 4px 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.85) translateY(20px);
+    transform-origin: bottom right;
+    opacity: 0; pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .chat-window.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+  .chat-win-header {
+    background: #075E54;
+    padding: 1rem 1.2rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .chat-win-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 1rem; color: white; flex-shrink: 0;
+    font-style: italic;
+  }
+  .chat-win-info { flex: 1; }
+  .chat-win-name { font-size: 0.9rem; font-weight: 500; color: white; }
+  .chat-win-status { font-size: 0.7rem; color: rgba(255,255,255,0.6); }
+  .chat-win-status::before { content:''; display:inline-block; width:6px; height:6px; border-radius:50%; background:#25D366; margin-right:4px; vertical-align:middle; }
+  /* Messages area */
+  .chat-messages {
+    padding: 1rem; flex: 1;
+    display: flex; flex-direction: column; gap: 0.6rem;
+    background: #111;
+    min-height: 200px; max-height: 260px; overflow-y: auto;
+    scrollbar-width: thin; scrollbar-color: #333 transparent;
+  }
+  .chat-msg {
+    max-width: 85%; padding: 0.6rem 0.9rem;
+    border-radius: 8px; font-size: 0.82rem; line-height: 1.5;
+    animation: msgIn 0.25s ease;
+  }
+  @keyframes msgIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+  .chat-msg.bot {
+    background: #1f2c33; color: #e9e9e9;
+    border-radius: 0 8px 8px 8px; align-self: flex-start;
+  }
+  .chat-msg.user {
+    background: #005c4b; color: white;
+    border-radius: 8px 0 8px 8px; align-self: flex-end;
+  }
+  .chat-msg-time { font-size: 0.6rem; opacity: 0.4; margin-top: 0.25rem; text-align: right; }
+  .chat-typing { display:flex; gap:4px; align-items:center; padding: 0.5rem 0.8rem; background:#1f2c33; border-radius:0 8px 8px 8px; align-self:flex-start; }
+  .chat-typing span { width:7px; height:7px; border-radius:50%; background:#aaa; animation: typing 1.2s infinite; }
+  .chat-typing span:nth-child(2){animation-delay:.2s}
+  .chat-typing span:nth-child(3){animation-delay:.4s}
+  @keyframes typing { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
+  /* Quick replies */
+  .chat-quick {
+    padding: 0.6rem 1rem; background: #0d0d0d;
+    display: flex; gap: 0.4rem; flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .chat-quick-btn {
+    padding: 0.35rem 0.8rem; border: 1px solid rgba(37,211,102,0.35);
+    background: transparent; color: #25D366;
+    font-size: 0.68rem; border-radius: 20px;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .chat-quick-btn:hover { background: rgba(37,211,102,0.1); border-color: #25D366; }
+  /* Input */
+  .chat-input-row {
+    display: flex; gap: 0.5rem; padding: 0.7rem 1rem;
+    background: #0d0d0d;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    align-items: flex-end;
+  }
+  .chat-input {
+    flex: 1; background: #1f2c33; border: none; outline: none;
+    color: white; font-family: var(--font-body); font-size: 0.85rem;
+    padding: 0.6rem 0.9rem; border-radius: 20px; resize: none;
+    max-height: 80px; line-height: 1.4;
+  }
+  .chat-input::placeholder { color: rgba(255,255,255,0.3); }
+  .chat-send-btn {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: #25D366; border: none; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s; 
+  }
+  .chat-send-btn:hover { background: #128C7E; }
+  .chat-send-btn svg { width: 18px; height: 18px; fill: white; }
+  .chat-disclaimer {
+    text-align: center; font-size: 0.62rem; padding: 0.5rem;
+    opacity: 0.3; color: var(--cream); background: #0d0d0d;
+  }
+  @media (max-width: 600px) {
+    .chat-window { width: calc(100vw - 2rem); right: 1rem; bottom: 5rem; }
+    .chat-fab { bottom: 1rem; right: 1rem; }
+  }
+
+  /* FOOTER */
+  footer {
+    background: #050505;
+    padding: 5rem 4rem 2rem;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem; margin-bottom: 4rem;
+  }
+  .footer-brand .nav-logo { font-size: 1.8rem; display: block; margin-bottom: 1rem; }
+  .footer-brand p { font-size: 0.85rem; opacity: 0.4; line-height: 1.7; }
+  .footer-col h4 {
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.7rem; }
+  .footer-col ul li a {
+    font-size: 0.85rem; opacity: 0.5; text-decoration: none; color: var(--cream);
+    transition: opacity 0.3s;
+  }
+  .footer-col ul li a:hover { opacity: 1; color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p { font-size: 0.7rem; opacity: 0.3; }
+  .footer-socials { display: flex; gap: 1.5rem; }
+  .footer-socials a {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--cream); opacity: 0.4; text-decoration: none;
+    transition: opacity 0.3s;
+  }
+  .footer-socials a:hover { opacity: 1; color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* LOCATIONS */
+  #locations { background: var(--black2); }
+  .locations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1000px; margin: 0 auto; }
+  .location-card {
+    border: 1px solid rgba(201,168,76,0.2); padding: 3rem;
+    position: relative; overflow: hidden; transition: border-color 0.3s;
+  }
+  .location-card:hover { border-color: rgba(201,168,76,0.5); }
+  .location-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .location-badge {
+    font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--black); background: var(--gold);
+    padding: 0.3rem 0.8rem; display: inline-block; margin-bottom: 1.5rem;
+  }
+  .location-name { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; margin-bottom: 1.5rem; }
+  .location-hours { margin-bottom: 2rem; }
+  .location-day { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.82rem; }
+  .location-day-name { opacity: 0.5; }
+  .location-day-time { color: var(--gold-light); }
+  .location-contact { display: flex; flex-direction: column; gap: 0.8rem; }
+  .location-contact a { font-size: 0.85rem; opacity: 0.7; color: var(--cream); text-decoration: none; transition: opacity 0.3s; }
+  .location-contact a:hover { opacity: 1; color: var(--gold); }
+  .location-contact span { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.2rem; }
+
+  /* BRANDS */
+  #brands { background: var(--black); padding: 5rem 4rem; text-align: center; }
+  .brands-track-wrap { overflow: hidden; position: relative; margin-top: 3rem; }
+  .brands-track-wrap::before, .brands-track-wrap::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
+  }
+  .brands-track-wrap::before { left: 0; background: linear-gradient(to right, var(--black), transparent); }
+  .brands-track-wrap::after { right: 0; background: linear-gradient(to left, var(--black), transparent); }
+  .brands-track {
+    display: flex; gap: 4rem; align-items: center;
+    animation: brandScroll 25s linear infinite; width: max-content;
+  }
+  .brands-track:hover { animation-play-state: paused; }
+  @keyframes brandScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .brand-item {
+    font-family: var(--font-display); font-size: 1.3rem; font-weight: 300;
+    color: rgba(245,237,224,0.3); white-space: nowrap; letter-spacing: 0.1em;
+    transition: color 0.3s; flex-shrink: 0;
+  }
+  .brand-item:hover { color: var(--gold); }
+
+  /* SPECIALTIES */
+  .specialties-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1100px; margin: 0 auto; }
+  .specialty-card {
+    background: var(--black3); padding: 2.5rem; border: 1px solid rgba(201,168,76,0.08);
+    position: relative; overflow: hidden; transition: all 0.4s;
+  }
+  .specialty-card:hover { border-color: rgba(201,168,76,0.3); }
+  .specialty-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .specialty-title { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 1rem; }
+  .specialty-desc { font-size: 0.82rem; opacity: 0.55; line-height: 1.7; }
+
+  /* TEAM */
+  #team { background: var(--black); }
+  .team-header { text-align: center; margin-bottom: 5rem; }
+  .team-header .gold-divider { margin: 2rem auto; }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; max-width: 1200px; margin: 0 auto;
+  }
+  .team-card {
+    background: var(--black3);
+    border: 1px solid rgba(201,168,76,0.08);
+    padding: 2.5rem 2rem 2rem;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; position: relative; overflow: hidden;
+    transition: all 0.4s; 
+  }
+  .team-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .team-card:hover { border-color: rgba(201,168,76,0.35); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .team-card:hover::before { opacity: 1; }
+  .team-card.selected {
+    border-color: var(--gold) !important;
+    background: rgba(201,168,76,0.05);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(201,168,76,0.15);
+  }
+  .team-card.selected::before { opacity: 1; }
+  .team-photo-wrap {
+    width: 110px; height: 110px; border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.3);
+    overflow: hidden; margin-bottom: 1.5rem;
+    position: relative; flex-shrink: 0;
+    background: linear-gradient(135deg, #1a1408, #0d0d0d);
+  }
+  .team-photo-wrap img {
+    width: 100%; height: 100%; object-fit: cover; object-position: top center;
+    filter: grayscale(20%) contrast(1.05);
+    transition: filter 0.4s, transform 0.4s;
+  }
+  .team-card:hover .team-photo-wrap img { filter: grayscale(0%) contrast(1.1); transform: scale(1.05); }
+  .team-photo-initials {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--gold-dim);
+  }
+  .team-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem; font-weight: 400; margin-bottom: 0.4rem;
+    line-height: 1.2;
+  }
+  .team-role {
+    font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+  }
+  .team-tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .team-tag {
+    font-size: 0.58rem; padding: 0.25rem 0.7rem;
+    border: 1px solid rgba(201,168,76,0.2); color: rgba(245,237,224,0.5);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .team-book-btn {
+    width: 100%; padding: 0.75rem;
+    background: transparent; border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold); font-family: var(--font-body);
+    font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+    transition: all 0.3s; margin-top: auto;
+  }
+  .team-book-btn:hover, .team-card.selected .team-book-btn {
+    background: var(--gold); color: var(--black); border-color: var(--gold);
+  }
+  .team-selected-badge {
+    position: absolute; top: 1rem; right: 1rem;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gold); display: none;
+    align-items: center; justify-content: center;
+    font-size: 0.7rem; color: var(--black);
+  }
+  .team-card.selected .team-selected-badge { display: flex; }
+
+  /* INSPIRATION MODAL */
+  .inspo-trigger-bar {
+    background: linear-gradient(to right, rgba(201,168,76,0.08), rgba(201,168,76,0.04), rgba(201,168,76,0.08));
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 1.2rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.5rem; transition: all 0.3s;
+  }
+  .inspo-trigger-bar:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+  .inspo-trigger-bar-text { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; }
+  .inspo-trigger-bar-text span { color: var(--gold); display: block; font-size: 0.6rem; margin-top: 0.2rem; opacity: 0.7; }
+  .inspo-trigger-bar-icon { font-size: 1.5rem; }
+  .inspo-selected-preview {
+    display: none; margin-bottom: 1rem;
+    border: 1px solid var(--gold);
+    padding: 0.8rem 1rem;
+    align-items: center; gap: 1rem;
+  }
+  .inspo-selected-preview.active { display: flex; }
+  .inspo-preview-img { width: 60px; height: 60px; object-fit: cover; flex-shrink: 0; }
+  .inspo-preview-info { flex: 1; }
+  .inspo-preview-name { font-size: 0.8rem; color: var(--gold); }
+  .inspo-preview-sub { font-size: 0.65rem; opacity: 0.5; }
+  .inspo-preview-remove { font-size: 0.8rem; opacity: 0.5; transition: opacity 0.2s; }
+  .inspo-preview-remove:hover { opacity: 1; color: var(--gold); }
+
+  /* MODAL OVERLAY */
+  .inspo-modal {
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(0,0,0,0.95);
+    display: none; flex-direction: column;
+    overflow: hidden;
+  }
+  .inspo-modal.open { display: flex; }
+  .inspo-modal-header {
+    padding: 2rem 3rem;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .inspo-modal-title { font-family: var(--font-display); font-size: 1.8rem; font-weight: 300; }
+  .inspo-modal-title em { color: var(--gold); font-style: italic; }
+  .inspo-modal-close {
+    width: 44px; height: 44px; border: 1px solid rgba(201,168,76,0.3);
+    background: transparent; color: var(--cream); font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s;
+  }
+  .inspo-modal-close:hover { border-color: var(--gold); color: var(--gold); }
+  .inspo-modal-toolbar {
+    padding: 1.5rem 3rem;
+    display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    flex-shrink: 0;
+  }
+  .inspo-categories { display: flex; gap: 0.6rem; flex-wrap: wrap; flex: 1; }
+  .inspo-cat-btn {
+    padding: 0.45rem 1.1rem;
+    border: 1px solid rgba(255,255,255,0.12); background: transparent;
+    color: var(--cream); font-family: var(--font-body);
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    transition: all 0.25s;
+  }
+  .inspo-cat-btn:hover, .inspo-cat-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.07); }
+  .inspo-search-wrap { position: relative; }
+  .inspo-search {
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--cream); font-family: var(--font-body); font-size: 0.85rem;
+    outline: none; width: 220px; transition: border-color 0.3s;
+  }
+  .inspo-search:focus { border-color: var(--gold); }
+  .inspo-search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); opacity: 0.4; font-size: 0.9rem; }
+  .inspo-modal-body {
+    flex: 1; overflow-y: auto; padding: 2rem 3rem;
+    scrollbar-width: thin; scrollbar-color: var(--gold-dim) transparent;
+  }
+  .inspo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .inspo-card {
+    position: relative; overflow: hidden;
+    aspect-ratio: 3/4; background: var(--black3);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.35s;
+  }
+  .inspo-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-3px); }
+  .inspo-card.chosen { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+  .inspo-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .inspo-card:hover img { transform: scale(1.05); }
+  .inspo-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 50%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 1rem; opacity: 0; transition: opacity 0.35s;
+  }
+  .inspo-card:hover .inspo-card-overlay, .inspo-card.chosen .inspo-card-overlay { opacity: 1; }
+  .inspo-card-name { font-family: var(--font-display); font-size: 1rem; color: var(--cream); }
+  .inspo-card-tag { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+  .inspo-card-select-btn {
+    padding: 0.5rem; background: var(--gold); border: none;
+    color: var(--black); font-family: var(--font-body);
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    transition: background 0.3s; width: 100%;
+  }
+  .inspo-card.chosen .inspo-card-select-btn { background: var(--gold-light); }
+  .inspo-card-chosen-badge {
+    position: absolute; top: 0.7rem; right: 0.7rem;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--gold); display: none;
+    align-items: center; justify-content: center;
+    font-size: 0.8rem; color: var(--black); font-weight: 700;
+  }
+  .inspo-card.chosen .inspo-card-chosen-badge { display: flex; }
+  .inspo-modal-footer {
+    padding: 1.2rem 3rem;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .inspo-footer-info { font-size: 0.75rem; opacity: 0.5; }
+  .inspo-confirm-btn {
+    padding: 0.9rem 3rem;
+    background: var(--gold); border: none;
+    color: var(--black); font-family: var(--font-body);
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .inspo-confirm-btn:hover { background: var(--gold-light); }
+  .inspo-confirm-btn:disabled { opacity: 0.4; }
+  .inspo-no-results { text-align: center; padding: 4rem; opacity: 0.4; font-family: var(--font-display); font-size: 1.5rem; display: none; }
+
+  /* SOCIAL MEDIA SECTION */
+  #social { background: var(--black2); padding: 6rem 4rem; text-align: center; }
+  .social-header { margin-bottom: 4rem; }
+  .social-header .gold-divider { margin: 2rem auto; }
+  .social-header p { opacity: 0.55; font-size: 0.95rem; max-width: 560px; margin: 0 auto; line-height: 1.8; }
+  .social-grid {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 1.5rem; max-width: 900px; margin: 0 auto 3.5rem;
+  }
+  .social-card {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0.9rem; padding: 2rem 1.8rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: var(--black3);
+    text-decoration: none; color: var(--cream);
+    transition: all 0.35s; position: relative; overflow: hidden;
+    min-width: 120px; flex: 1; max-width: 150px;
+  }
+  .social-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--sc-color, var(--gold));
+    transform: scaleX(0); transition: transform 0.35s;
+  }
+  .social-card:hover { border-color: var(--sc-color, var(--gold)); transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+  .social-card:hover::before { transform: scaleX(1); }
+  .social-icon {
+    width: 52px; height: 52px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.35s, border-color 0.35s;
+  }
+  .social-card:hover .social-icon {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--sc-color, var(--gold));
+  }
+  .social-icon svg { width: 22px; height: 22px; }
+  .social-name {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    opacity: 0.6; transition: opacity 0.3s;
+  }
+  .social-card:hover .social-name { opacity: 1; color: var(--sc-color, var(--gold)); }
+  .social-handle {
+    font-family: var(--font-display); font-size: 0.95rem;
+    opacity: 0.4; transition: opacity 0.3s;
+  }
+  .social-card:hover .social-handle { opacity: 0.9; }
+  .social-follow-note {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); opacity: 0.7; margin-top: 1rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 1.5rem 2rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 2rem; }
+    .stats-bar { padding: 2rem; grid-template-columns: repeat(2, 1fr); }
+    #about { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .booking-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item:first-child { grid-column: span 2; }
+    .shop-grid { grid-template-columns: 1fr; max-width: 400px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .locations-grid { grid-template-columns: 1fr; }
+    .specialties-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .hero-title { font-size: 3.5rem; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .stat-item::after { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .newsletter-form { flex-direction: column; }
+    .newsletter-form input { border-right: 1px solid rgba(201,168,76,0.2); }
+    .footer-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:first-child { grid-column: span 2; }
+    .team-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .team-card { padding: 1.5rem 1rem; }
+    .team-photo-wrap { width: 80px; height: 80px; }
+  }
+</style>
 </head>
 <body>
-  <!-- Cursor Personalizado -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- WIDGET DE CHAT (WhatsApp) -->
-  <button class="chat-fab" id="chatFab" aria-label="Abrir chat">
-    <div class="chat-badge" id="chatBadge">1</div>
-    <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    <span class="close-icon" style="display:none; font-size:1.4rem; color:white;">✕</span>
-  </button>
-  <div class="chat-window" id="chatWindow">
-    <div class="chat-win-header">
-      <div class="chat-win-avatar">M</div>
-      <div class="chat-win-info">
-        <div class="chat-win-name">Micheline Nail Bar</div>
-        <div class="chat-win-status">En línea ahora</div>
-      </div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- CHAT WIDGET -->
+<button class="chat-fab" id="chatFab" aria-label="Abrir chat">
+  <div class="chat-badge" id="chatBadge">1</div>
+  <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="close-icon">✕</span>
+</button>
+
+<div class="chat-window" id="chatWindow">
+  <div class="chat-win-header">
+    <div class="chat-win-avatar">M</div>
+    <div class="chat-win-info">
+      <div class="chat-win-name">Micheline Nail Bar</div>
+      <div class="chat-win-status">En línea ahora</div>
     </div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="chat-msg bot">¡Hola! Bienvenida a Micheline. ¿En qué te podemos ayudar hoy? 🥂</div>
-    </div>
-    <div class="chat-quick" id="chatQuick">
-      <button class="chat-quick-btn" data-msg="Quiero reservar una cita">📅 Reservar cita</button>
-      <button class="chat-quick-btn" data-msg="¿Cuáles son los precios?">💰 Ver precios</button>
-      <button class="chat-quick-btn" data-msg="¿Cuál es el horario?">🕐 Horario</button>
-    </div>
-    <div class="chat-input-row">
-      <textarea class="chat-input" id="chatInput" placeholder="Escribe tu mensaje..." rows="1"></textarea>
-      <button class="chat-send-btn" id="chatSend" aria-label="Enviar mensaje">
-        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-      </button>
-    </div>
-    <div class="chat-disclaimer">Desarrollado por Micheline AI · vía WhatsApp</div>
   </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-quick" id="chatQuick">
+    <button class="chat-quick-btn" data-msg="Quiero reservar una cita">📅 Reservar cita</button>
+    <button class="chat-quick-btn" data-msg="¿Cuáles son los precios?">💰 Ver precios</button>
+    <button class="chat-quick-btn" data-msg="¿Cuál es el horario?">🕐 Horario</button>
+    <button class="chat-quick-btn" data-msg="Quiero información de los servicios">✨ Servicios</button>
+  </div>
+  <div class="chat-input-row">
+    <textarea class="chat-input" id="chatInput" placeholder="Escribe tu mensaje..." rows="1"></textarea>
+    <button class="chat-send-btn" id="chatSend">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+  <div class="chat-disclaimer">Powered by Micheline AI · vía WhatsApp</div>
+</div>
 
-  <!-- NAVEGACIÓN -->
-  <header id="navbar">
-    <a href="#" class="nav-logo">Micheline <span>Nail Bar</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">Nosotras</a></li>
-      <li><a href="#services">Servicios</a></li>
-      <li><a href="#team">Equipo</a></li>
-      <li><a href="#pricing">Precios</a></li>
-      <li><a href="#locations">Sucursales</a></li>
-      <li><a href="#gallery">Galería</a></li>
-    </ul>
-    <a href="#booking" class="nav-cta">Reservar Cita</a>
-  </header>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Micheline <span>Nail Bar</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">Nosotras</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#team">Equipo</a></li>
+    <li><a href="#pricing">Precios</a></li>
+    <li><a href="#locations">Sucursales</a></li>
+    <li><a href="#gallery">Galería</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Reservar Cita</a>
+</nav>
 
-  <!-- HÉROE -->
-  <main>
-    <section id="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-rose-accent"></div>
-      <div class="hero-lines"></div>
-      <div class="hero-gold-line"></div>
-      <div class="hero-content">
-        <p class="hero-eyebrow">Experiencia de belleza de lujo</p>
-        <h1 class="hero-title">Micheline<br/><em>Nail Bar</em></h1>
-        <p class="hero-subtitle">Tu lugar perfecto para mimarte</p>
-        <div class="hero-ctas">
-          <a href="#booking" class="btn-primary">Reservar Cita</a>
-          <a href="#services" class="btn-outline">Ver Servicios</a>
-        </div>
-      </div>
-      <div class="hero-scroll" id="heroScrollBtn">
-        <span>Desplazarse</span>
-        <div class="scroll-line"></div>
-      </div>
-    </section>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-gold-line"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Luxury Beauty Experience</p>
+    <h1 class="hero-title">Micheline<br/><em>Nail Bar</em></h1>
+    <p class="hero-subtitle">Tu lugar perfecto para mimarte</p>
+    <div class="hero-ctas">
+      <a href="#booking" class="btn-primary">Reservar Cita</a>
+      <a href="#services" class="btn-outline">Ver Servicios</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
 
-    <!-- ESTADÍSTICAS -->
-    <section class="stats-bar reveal">
-      <div class="stat-item">
-        <span class="stat-num">2</span>
-        <span class="stat-label">Sucursales</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">13+</span>
-        <span class="stat-label">Marcas premium</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">10+</span>
-        <span class="stat-label">Servicios Especializados</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">5<span style="font-size:0.8em;color:var(--gold);">★</span></span>
-        <span class="stat-label">Valoración Positiva</span>
-      </div>
-    </section>
+<!-- STATS -->
+<div class="stats-bar reveal">
+  <div class="stat-item">
+    <span class="stat-num">2</span>
+    <span class="stat-label">Sucursales</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">13+</span>
+    <span class="stat-label">Marcas premium</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">10+</span>
+    <span class="stat-label">Servicios especializados</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">5★</span>
+    <span class="stat-label">Valoración</span>
+  </div>
+</div>
 
-    <!-- ACERCA DE -->
-    <section id="about">
-      <div class="about-text reveal">
-        <p class="section-label">Nuestra historia</p>
-        <h2 class="section-title">Arte & <em>Belleza</em><br/>en cada detalle</h2>
-        <div class="gold-divider"></div>
-        <p>En Micheline Nail Bar & Beauty Lounge creemos que la belleza es una forma de autocuidado y expresión personal. Con dos sucursales en San Pedro de Macorís y Boca Chica, llevamos el lujo al alcance de toda mujer.</p>
-        <p>Nuestro equipo de especialistas utiliza exclusivamente marcas de alta gama como OPI, Alfaparf, Moroccan Oil, Gelish y Davines, para ofrecerte resultados que superan las expectativas en cada visita.</p>
-        <a href="#booking" class="btn-primary" style="display:inline-block;margin-top:2rem;">Agenda tu cita</a>
-      </div>
-      <div class="about-image reveal">
-        <div class="about-image-inner">
-          <span class="about-image-text">Micheline</span>
-        </div>
-      </div>
-    </section>
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text reveal">
+    <p class="section-label">Nuestra historia</p>
+    <h2 class="section-title">Arte & <em>Belleza</em><br/>en cada detalle</h2>
+    <div class="gold-divider"></div>
+    <p>En Micheline Nail Bar & Beauty Lounge creemos que la belleza es una forma de autocuidado y expresión personal. Con dos sucursales en San Pedro de Macorís y Boca Chica, llevamos el lujo al alcance de toda mujer.</p>
+    <p>Nuestro equipo de especialistas utiliza exclusivamente marcas de alta gama como OPI, Alfaparf, Moroccan Oil, Gelish y Davines, para ofrecerte resultados que superan las expectativas en cada visita.</p>
+    <a href="#booking" class="btn-primary" style="display:inline-block;margin-top:2rem;">Agenda tu cita</a>
+  </div>
+  <div class="about-image reveal">
+    <div class="about-image-inner">
+      <span class="about-image-text">Micheline</span>
+    </div>
+  </div>
+</section>
 
-    <!-- SERVICIOS -->
-    <section id="services">
-      <div class="services-header reveal">
-        <p class="section-label">Lo que ofrecemos</p>
-        <h2 class="section-title">Servicios <em>Premium</em></h2>
-        <div class="gold-divider"></div>
-      </div>
-      <div class="services-grid">
-        <article class="service-card reveal">
-          <span class="service-icon" aria-hidden="true">💅</span>
-          <h3 class="service-name">Nail Bar</h3>
-          <p class="service-desc">Manicura, pedicura, uñas en gel, acrílicos y todo lo que necesitas para unas manos perfectas.</p>
-          <span class="service-price-range">Desde RD$200</span>
-        </article>
-        <article class="service-card reveal">
-          <span class="service-icon" aria-hidden="true">🦶</span>
-          <h3 class="service-name">Pedi Spa</h3>
-          <p class="service-desc">Tratamiento de lujo en 4 pasos para tus pies. Exfoliación, hidratación y relajación total.</p>
-          <span class="service-price-range">Desde RD$350</span>
-        </article>
-        <article class="service-card reveal">
-          <span class="service-icon" aria-hidden="true">✨</span>
-          <h3 class="service-name">Uñas Acrílicas</h3>
-          <p class="service-desc">Francesas, baby boomer, porcelanato, soft gel tips. Diseños únicos y personalizados.</p>
-          <span class="service-price-range">Desde RD$300</span>
-        </article>
-        <article class="service-card reveal">
-          <span class="service-icon" aria-hidden="true">💇‍♀️</span>
-          <h3 class="service-name">Peluquería</h3>
-          <p class="service-desc">Lavados, cortes, peinados elaborados y definición de rizos. Tu cabello, transformado.</p>
-          <span class="service-price-range">Desde RD$300</span>
-        </article>
-        <article class="service-card reveal">
-          <span class="service-icon" aria-hidden="true">🌿</span>
-          <h3 class="service-name">Depilación con cera</h3>
-          <p class="service-desc">Cejas, axilas, bikini, brasileño y más. Resultados duraderos con técnica profesional.</p>
-          <span class="service-price-range">Desde RD$200</span>
-        </article>
-        <article class="service-card reveal">
-          <span class="service-icon" aria-hidden="true">💄</span>
-          <h3 class="service-name">Maquillaje & Facial</h3>
-          <p class="service-desc">Maquillaje profesional para cualquier ocasión y tratamientos faciales que renuevan tu piel.</p>
-          <span class="service-price-range">Desde RD$300</span>
-        </article>
-      </div>
-    </section>
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <p class="section-label">Lo que ofrecemos</p>
+    <h2 class="section-title">Servicios <em>Premium</em></h2>
+    <div class="gold-divider"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">💅</span>
+      <div class="service-name">Nail Bar</div>
+      <p class="service-desc">Manicure, pedicure, uñas en gel, acrílicas y todo lo que necesitas para unas manos perfectas.</p>
+      <span class="service-price-range">Desde RD$200</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🦶</span>
+      <div class="service-name">Pedi Spa</div>
+      <p class="service-desc">Tratamiento de lujo en 4 pasos para tus pies. Exfoliación, hidratación y relajación total.</p>
+      <span class="service-price-range">Desde RD$350</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">✨</span>
+      <div class="service-name">Uñas Acrílicas</div>
+      <p class="service-desc">Francesas, baby boomer, porcelanato, soft gel tips. Diseños únicos y personalizados.</p>
+      <span class="service-price-range">Desde RD$300</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">💇‍♀️</span>
+      <div class="service-name">Peluquería</div>
+      <p class="service-desc">Lavados, cortes, peinados elaborados y definición de rizos. Tu cabello, transformado.</p>
+      <span class="service-price-range">Desde RD$300</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🌿</span>
+      <div class="service-name">Depilación con Cera</div>
+      <p class="service-desc">Cejas, axilas, bikini, brasileño y más. Resultados duraderos con técnica profesional.</p>
+      <span class="service-price-range">Desde RD$200</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">💄</span>
+      <div class="service-name">Maquillaje & Facial</div>
+      <p class="service-desc">Maquillaje profesional para cualquier ocasión y tratamientos faciales que renuevan tu piel.</p>
+      <span class="service-price-range">Desde RD$300</span>
+    </div>
+  </div>
+</section>
 
-    <!-- LISTA DE PRECIOS -->
-    <section id="pricing">
-      <div class="pricing-intro reveal">
-        <p class="section-label">Transparencia total</p>
-        <h2 class="section-title">Lista de <em>Precios</em></h2>
-        <div class="gold-divider"></div>
-      </div>
-      <div class="pricing-grid">
-        <div class="price-category reveal">
-          <h3 class="price-cat-title">✂️ Peluquería</h3>
-          <div class="price-item"><span class="price-item-name">Lavado regular</span><span class="price-item-dots"></span><span class="price-item-value">RD$300</span></div>
-          <div class="price-item"><span class="price-item-name">Lavado con línea</span><span class="price-item-dots"></span><span class="price-item-value">RD$750</span></div>
-          <div class="price-item"><span class="price-item-name">Corte de puntas</span><span class="price-item-dots"></span><span class="price-item-value">RD$350</span></div>
-          <div class="price-item"><span class="price-item-name">Corte elaborado</span><span class="price-item-dots"></span><span class="price-item-value">RD$1,000</span></div>
-          <div class="price-item"><span class="price-item-name">Peinado elaborado</span><span class="price-item-dots"></span><span class="price-item-value">RD$350</span></div>
-          <div class="price-item"><span class="price-item-name">Definición de rizos</span><span class="price-item-dots"></span><span class="price-item-value">RD$700</span></div>
-        </div>
-        <div class="price-category reveal">
-          <h3 class="price-cat-title">💅 Mani & Pedi</h3>
-          <div class="price-item"><span class="price-item-name">Manicure regular</span><span class="price-item-dots"></span><span class="price-item-value">RD$300</span></div>
-          <div class="price-item"><span class="price-item-name">Manicura Spa</span><span class="price-item-dots"></span><span class="price-item-value">RD$500</span></div>
-          <div class="price-item"><span class="price-item-name">Pedicura regular</span><span class="price-item-dots"></span><span class="price-item-value">RD$350</span></div>
-          <div class="price-item"><span class="price-item-name">Pedi Spa 4 pasos</span><span class="price-item-dots"></span><span class="price-item-value">RD$950</span></div>
-          <div class="price-item"><span class="price-item-name">Pintura en Gel</span><span class="price-item-dots"></span><span class="price-item-value">RD$450</span></div>
-          <div class="price-item"><span class="price-item-name">Pintura regular</span><span class="price-item-dots"></span><span class="price-item-value">RD$200</span></div>
-        </div>
-        <div class="price-category reveal">
-          <h3 class="price-cat-title">✨ Uñas Acrílicas</h3>
-          <div class="price-item"><span class="price-item-name">Uñas Acrílicas Reg.</span><span class="price-item-dots"></span><span class="price-item-value">RD$350</span></div>
-          <div class="price-item"><span class="price-item-name">Uñas Acrílicas Pies</span><span class="price-item-dots"></span><span class="price-item-value">RD$300</span></div>
-          <div class="price-item"><span class="price-item-name">Uñas Francesas</span><span class="price-item-dots"></span><span class="price-item-value">RD$500</span></div>
-          <div class="price-item"><span class="price-item-name">Soft Gel Tips</span><span class="price-item-dots"></span><span class="price-item-value">RD$900</span></div>
-          <div class="price-item"><span class="price-item-name">Baby Boomer</span><span class="price-item-dots"></span><span class="price-item-value">RD$900</span></div>
-          <div class="price-item"><span class="price-item-name">Porcelanato</span><span class="price-item-dots"></span><span class="price-item-value">RD$750</span></div>
-        </div>
-        <div class="price-category reveal">
-          <h3 class="price-cat-title">🌿 Depilación con Cera</h3>
-          <div class="price-item"><span class="price-item-name">Cejas</span><span class="price-item-dots"></span><span class="price-item-value">RD$200</span></div>
-          <div class="price-item"><span class="price-item-name">Axilas</span><span class="price-item-dots"></span><span class="price-item-value">RD$300</span></div>
-          <div class="price-item"><span class="price-item-name">Bikini</span><span class="price-item-dots"></span><span class="price-item-value">RD$550</span></div>
-          <div class="price-item"><span class="price-item-name">Brasileño</span><span class="price-item-dots"></span><span class="price-item-value">RD$1,600</span></div>
-          <div class="price-item"><span class="price-item-name">Medias piernas</span><span class="price-item-dots"></span><span class="price-item-value">RD$700</span></div>
-        </div>
-      </div>
-    </section>
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-intro reveal">
+    <p class="section-label">Transparencia total</p>
+    <h2 class="section-title">Lista de <em>Precios</em></h2>
+    <div class="gold-divider"></div>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-category reveal">
+      <div class="price-cat-title">✂️ Peluquería</div>
+      <div class="price-item"><span class="price-item-name">Lavado regular</span><span class="price-item-dots"></span><span class="price-item-value">RD$300</span></div>
+      <div class="price-item"><span class="price-item-name">Lavado con línea</span><span class="price-item-dots"></span><span class="price-item-value">RD$750</span></div>
+      <div class="price-item"><span class="price-item-name">Corte de puntas</span><span class="price-item-dots"></span><span class="price-item-value">RD$350</span></div>
+      <div class="price-item"><span class="price-item-name">Corte elaborado</span><span class="price-item-dots"></span><span class="price-item-value">RD$1,000</span></div>
+      <div class="price-item"><span class="price-item-name">Peinado elaborado</span><span class="price-item-dots"></span><span class="price-item-value">RD$350</span></div>
+      <div class="price-item"><span class="price-item-name">Definición de rizos</span><span class="price-item-dots"></span><span class="price-item-value">RD$700</span></div>
+    </div>
+    <div class="price-category reveal">
+      <div class="price-cat-title">💅 Mani & Pedi</div>
+      <div class="price-item"><span class="price-item-name">Manicure regular</span><span class="price-item-dots"></span><span class="price-item-value">RD$300</span></div>
+      <div class="price-item"><span class="price-item-name">Manicure Spa</span><span class="price-item-dots"></span><span class="price-item-value">RD$500</span></div>
+      <div class="price-item"><span class="price-item-name">Pedicure regular</span><span class="price-item-dots"></span><span class="price-item-value">RD$350</span></div>
+      <div class="price-item"><span class="price-item-name">Pedi Spa 4 pasos</span><span class="price-item-dots"></span><span class="price-item-value">RD$950</span></div>
+      <div class="price-item"><span class="price-item-name">Pintura en Gel</span><span class="price-item-dots"></span><span class="price-item-value">RD$450</span></div>
+      <div class="price-item"><span class="price-item-name">Pintura regular</span><span class="price-item-dots"></span><span class="price-item-value">RD$200</span></div>
+    </div>
+    <div class="price-category reveal">
+      <div class="price-cat-title">✨ Uñas Acrílicas</div>
+      <div class="price-item"><span class="price-item-name">Uñas Acrílicas Reg.</span><span class="price-item-dots"></span><span class="price-item-value">RD$350</span></div>
+      <div class="price-item"><span class="price-item-name">Uñas Acrílicas Pies</span><span class="price-item-dots"></span><span class="price-item-value">RD$300</span></div>
+      <div class="price-item"><span class="price-item-name">Uñas Francesas</span><span class="price-item-dots"></span><span class="price-item-value">RD$500</span></div>
+      <div class="price-item"><span class="price-item-name">Soft Gel Tips</span><span class="price-item-dots"></span><span class="price-item-value">RD$900</span></div>
+      <div class="price-item"><span class="price-item-name">Baby Boomer</span><span class="price-item-dots"></span><span class="price-item-value">RD$900</span></div>
+      <div class="price-item"><span class="price-item-name">Porcelanato</span><span class="price-item-dots"></span><span class="price-item-value">RD$750</span></div>
+    </div>
+    <div class="price-category reveal">
+      <div class="price-cat-title">🌿 Depilación con Cera</div>
+      <div class="price-item"><span class="price-item-name">Cejas</span><span class="price-item-dots"></span><span class="price-item-value">RD$200</span></div>
+      <div class="price-item"><span class="price-item-name">Axilas</span><span class="price-item-dots"></span><span class="price-item-value">RD$300</span></div>
+      <div class="price-item"><span class="price-item-name">Bikini</span><span class="price-item-dots"></span><span class="price-item-value">RD$550</span></div>
+      <div class="price-item"><span class="price-item-name">Brasileño</span><span class="price-item-dots"></span><span class="price-item-value">RD$1,600</span></div>
+      <div class="price-item"><span class="price-item-name">Medias piernas</span><span class="price-item-dots"></span><span class="price-item-value">RD$700</span></div>
+    </div>
+  </div>
+</section>
 
-    <!-- UBICACIONES -->
-    <section id="locations" class="section-locations">
-      <div class="reveal text-center" style="text-align:center; padding-bottom:3rem;">
-        <p class="section-label">Encuéntranos</p>
-        <h2 class="section-title">Nuestras <em>Sucursales</em></h2>
-        <div class="gold-divider" style="margin:2rem auto;"></div>
+<!-- LOCATIONS -->
+<section id="locations">
+  <div style="text-align:center;margin-bottom:4rem;" class="reveal">
+    <p class="section-label">Encuéntranos</p>
+    <h2 class="section-title">Nuestras <em>Sucursales</em></h2>
+    <div class="gold-divider" style="margin:2rem auto;"></div>
+  </div>
+  <div class="locations-grid reveal">
+    <div class="location-card">
+      <span class="location-badge">Sucursal Principal</span>
+      <div class="location-name">San Pedro de Macorís</div>
+      <div class="location-hours">
+        <div class="location-day"><span class="location-day-name">Lunes – Viernes</span><span class="location-day-time">7:00am – 11:00pm</span></div>
+        <div class="location-day"><span class="location-day-name">Sábados</span><span class="location-day-time">8:00am – 10:00pm</span></div>
+        <div class="location-day"><span class="location-day-name">Domingos</span><span class="location-day-time">8:00am – 6:00pm</span></div>
       </div>
-      <div class="locations-grid reveal">
-        <div class="location-card">
-          <span class="location-badge">Sucursal Principal</span>
-          <h3 class="location-name">San Pedro de Macorís</h3>
-          <div class="location-hours">
-            <div class="location-day"><span class="location-day-name">Lunes – Viernes</span><span class="location-day-time">7:00am – 11:00pm</span></div>
-            <div class="location-day"><span class="location-day-name">Sábados</span><span class="location-day-time">8:00am – 10:00pm</span></div>
-            <div class="location-day"><span class="location-day-name">Domingos</span><span class="location-day-time">8:00am – 6:00pm</span></div>
-          </div>
-          <div class="location-contact">
-            <a href="tel:8098979609"><span>Teléfono local</span>809-897-9609</a>
-            <a href="https://wa.me/18098979609" target="_blank" rel="noopener"><span>WhatsApp</span>809-897-9609</a>
-            <a href="https://www.facebook.com/michelinenailbar/" target="_blank" rel="noopener"><span>Facebook</span>@michelinenailbar</a>
-          </div>
-        </div>
-        <div class="location-card">
-          <span class="location-badge">Segunda Sucursal</span>
-          <h3 class="location-name">Boca Chica</h3>
-          <div class="location-hours">
-            <div class="location-day"><span class="location-day-name">Lunes – Viernes</span><span class="location-day-time">7:00am – 9:00pm</span></div>
-            <div class="location-day"><span class="location-day-name">Sábados</span><span class="location-day-time">8:00am – 8:00pm</span></div>
-            <div class="location-day"><span class="location-day-name">Domingos</span><span class="location-day-time">8:00am – 6:00pm</span></div>
-          </div>
-          <div class="location-contact">
-            <a href="https://wa.me/18098979609" target="_blank" rel="noopener"><span>WhatsApp</span>809-897-9609</a>
-            <a href="mailto:hola@michelinenailbar.com"><span>Correo electrónico</span>hola@michelinenailbar.com</a>
-            <a href="https://www.instagram.com/michelinenailbar/" target="_blank" rel="noopener"><span>Instagram</span>@michelinenailbar</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MARCAS -->
-    <section id="brands">
-      <div class="reveal" style="text-align:center;">
-        <p class="section-label">Calidad garantizada</p>
-        <h2 class="section-title">Marcas que <em>Confiamos</em></h2>
-        <div class="gold-divider" style="margin:2rem auto;"></div>
-        <p class="section-subtitle">Solo trabajamos con productos reconocidos de alta gama.</p>
-      </div>
-      <div class="brands-track-wrap">
-        <div class="brands-track">
-          <span class="brand-item">OPI</span>
-          <span class="brand-item">Alfaparf</span>
-          <span class="brand-item">Moroccan Oil</span>
-          <span class="brand-item">Gelish</span>
-          <span class="brand-item">Davines</span>
-          <span class="brand-item">Alter Ego</span>
-          <span class="brand-item">Morgan Taylor</span>
-          <span class="brand-item">Cuccio</span>
-          <span class="brand-item">Vitality's</span>
-          <span class="brand-item">Argan Oil</span>
-          <span class="brand-item">Sebastian</span>
-          <span class="brand-item">Fanola</span>
-          <span class="brand-item">Deya</span>
-          <!-- duplicado para loop infinito -->
-          <span class="brand-item">OPI</span>
-          <span class="brand-item">Alfaparf</span>
-          <span class="brand-item">Moroccan Oil</span>
-          <span class="brand-item">Gelish</span>
-          <span class="brand-item">Davines</span>
-          <span class="brand-item">Alter Ego</span>
-          <span class="brand-item">Morgan Taylor</span>
-          <span class="brand-item">Cuccio</span>
-          <span class="brand-item">Vitality's</span>
-          <span class="brand-item">Argan Oil</span>
-          <span class="brand-item">Sebastian</span>
-          <span class="brand-item">Fanola</span>
-          <span class="brand-item">Deya</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- EQUIPO -->
-    <section id="team">
-      <div class="team-header reveal">
-        <p class="section-label">Conoce a nuestros especialistas</p>
-        <h2 class="section-title">Nuestro <em>Equipo</em></h2>
-        <div class="gold-divider" style="margin:2rem auto;"></div>
-        <p style="opacity:0.5;font-size:0.9rem;max-width:500px;margin:0 auto;">Elige a tu especialista favorito y agenda directamente con ella en el formulario a continuación.</p>
-      </div>
-      <div class="team-grid" id="teamGrid">
-        <!-- Renderizado dinámicamente -->
-      </div>
-    </section>
-
-    <!-- RESERVA -->
-    <section id="booking">
-      <div class="booking-inner">
-        <div class="booking-info reveal">
-          <p class="section-label">Agenda online</p>
-          <h2 class="section-title">Reserva tu<br/><em>Experiencia</em></h2>
-          <div class="gold-divider"></div>
-          <p class="booking-subtitle" style="opacity: 0.6; line-height: 1.8; margin-bottom: 2.5rem;">Agenda tu cita en segundos. Te confirmaremos por WhatsApp en menos de 1 hora para tu mayor comodidad.</p>
-          
-          <div class="booking-detail">
-            <span class="booking-detail-icon">📍</span>
-            <div class="booking-detail-text">
-              <strong>Sucursales Disponibles</strong>
-              San Pedro de Macorís · Boca Chica
-            </div>
-          </div>
-          <div class="booking-detail">
-            <span class="booking-detail-icon">📱</span>
-            <div class="booking-detail-text">
-              <strong>Asistencia San Pedro</strong>
-              <a href="https://wa.me/18098979609" style="color:var(--gold);text-decoration:none;">+(809) 897-9609</a>
-            </div>
-          </div>
-          <div class="booking-detail">
-            <span class="booking-detail-icon">📱</span>
-            <div class="booking-detail-text">
-              <strong>Asistencia Boca Chica</strong>
-              <a href="https://wa.me/18098979609" style="color:var(--gold);text-decoration:none;">+(809) 897-9609</a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="booking-form reveal">
-          <form id="appointmentForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Nombre Completo</label>
-                <input type="text" id="name" name="name" placeholder="Ej. Ana Pérez" required/>
-              </div>
-              <div class="form-group">
-                <label for="phone">Teléfono / WhatsApp</label>
-                <input type="tel" id="phone" name="phone" placeholder="+1 (809) XXX-XXXX" required/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="branch">Sucursal</label>
-              <select id="branch" name="branch" required>
-                <option value="" disabled selected>Selecciona tu sucursal más cercana</option>
-                <option>San Pedro de Macorís</option>
-                <option>Boca Chica</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="service">Servicio Principal</label>
-              <select id="service" name="service" required>
-                <option value="" disabled selected>¿Qué te gustaría realizarte?</option>
-                <optgroup label="💅 Nail Bar">
-                  <option>Manicure Spa</option>
-                  <option>Pedi Spa 4 pasos</option>
-                  <option>Uñas Acrílicas</option>
-                  <option>Soft Gel Tips / Baby Boomer</option>
-                  <option>Pintura en Gel</option>
-                </optgroup>
-                <optgroup label="✂️ Peluquería">
-                  <option>Lavado y Peinado</option>
-                  <option>Corte y Secado</option>
-                  <option>Definición de rizos</option>
-                </optgroup>
-                <optgroup label="🌿 Otros">
-                  <option>Depilación con Cera</option>
-                  <option>Maquillaje o Facial</option>
-                </optgroup>
-              </select>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="date">Fecha Preferida</label>
-                <input type="date" id="date" name="date" required/>
-              </div>
-              <div class="form-group">
-                <label for="time">Hora Aproximada</label>
-                <input type="time" id="time" name="time" min="09:00" max="19:00" required/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="notes">Notas o Consideraciones (Opcional)</label>
-              <textarea id="notes" name="notes" placeholder="¿Deseas agregar algún diseño especial o tienes alguna condición?"></textarea>
-            </div>
-            <button type="submit" class="form-submit">Generar Reserva vía WhatsApp →</button>
-            <p class="form-note">Serás redirigida a WhatsApp para enviar de forma segura los detalles de tu cita a nuestro asistente.</p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALERÍA -->
-    <section id="gallery">
-      <div class="gallery-header reveal" style="text-align:center;">
-        <p class="section-label">Nuestro Trabajo</p>
-        <h2 class="section-title">La <em>Galería</em></h2>
-        <div class="gold-divider" style="margin:2rem auto;"></div>
-        <p class="section-subtitle" style="opacity:0.6;">Obras de arte creadas diariamente por nuestros talentosos especialistas.</p>
-      </div>
-      <div class="gallery-grid">
-        <div class="gallery-item" loading="lazy">
-          <div class="gallery-placeholder">💅<span>Arte en Acrílico</span></div>
-        </div>
-        <div class="gallery-item"><div class="gallery-placeholder">✨</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder">💎</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder">🌸</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder">💄</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder">👑</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder">🦋</div></div>
-      </div>
-      <div class="gallery-cta reveal" style="text-align:center; margin-top:3rem;">
-        <a href="https://www.instagram.com/michelinenailbar/" target="_blank" rel="noopener" class="btn-outline">Ver más inspiración en Instagram →</a>
-      </div>
-    </section>
-
-    <!-- NEWSLETTER -->
-    <section id="newsletter">
-      <div class="newsletter-inner reveal">
-        <p class="section-label">Sé parte del club</p>
-        <h2 class="section-title">Ofertas & <em>Novedades</em></h2>
-        <div class="gold-divider" style="margin:2rem auto;"></div>
-        <p style="opacity:0.6; margin-bottom:2rem;">Recibe promociones VIP de spa, tips de belleza y notificaciones de nuevos productos directamente en tu correo.</p>
-        <form class="newsletter-form" id="newsletterForm">
-          <input type="email" placeholder="Ingresa tu correo electrónico" required aria-label="Correo electrónico" />
-          <button type="submit">Suscribirme Ahora</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- REDES SOCIALES -->
-    <section id="socials" class="socials-section">
-      <div class="socials-container reveal">
-        <div class="socials-header">
-          <p class="section-label">Síguenos en redes</p>
-          <h2 class="section-title">Conecta <em>con nosotras</em></h2>
-          <div class="rose-divider"></div>
-          <p class="socials-subtitle">Inspírate con nuestros diseños, tips de belleza y promociones exclusivas en todos nuestros canales.</p>
-        </div>
-        <div class="socials-grid">
-          <a href="https://www.instagram.com/michelinenailbar/" target="_blank" rel="noopener" class="social-card social-instagram" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            <span>Instagram</span>
-          </a>
-          <a href="https://www.facebook.com/michelinenailbar/" target="_blank" rel="noopener" class="social-card social-facebook" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            <span>Facebook</span>
-          </a>
-          <a href="https://www.tiktok.com/@michelinenailbar" target="_blank" rel="noopener" class="social-card social-tiktok" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.66 1.94 2.89 2.89 0 0 1 5.66-1.94v-3.1a6.3 6.3 0 0 0-5.81 3.86 6.31 6.31 0 0 0 10.77-5.23V8.35a8.12 8.12 0 0 0 3.65.62V5.49a4.84 4.84 0 0 1-.88-.05z"/></svg>
-            <span>TikTok</span>
-          </a>
-          <a href="https://x.com/michelinenailbar" target="_blank" rel="noopener" class="social-card social-x" aria-label="X (Twitter)">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7.5.881 11-2.5a17.46 17.46 0 001-4c0-.342-.023-.684-.067-1.025A11.36 11.36 0 0023 3z"/></svg>
-            <span>X</span>
-          </a>
-          <a href="https://www.linkedin.com/company/micheline-nail-bar" target="_blank" rel="noopener" class="social-card social-linkedin" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.44-.103.25-.129.599-.129.948v5.417h-3.554s.05-8.787 0-9.7h3.554v1.373c.43-.664 1.199-1.608 2.894-1.608 2.111 0 3.694 1.405 3.694 4.431v5.504zM5.337 8.855c-1.144 0-1.915-.759-1.915-1.71 0-.953.77-1.71 1.963-1.71 1.193 0 1.915.757 1.915 1.71 0 .951-.722 1.71-1.963 1.71zm1.572 11.597H3.767V9.557h3.142v10.895zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            <span>LinkedIn</span>
-          </a>
-          <a href="https://www.youtube.com/@michelinenailbar" target="_blank" rel="noopener" class="social-card social-youtube" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            <span>YouTube</span>
-          </a>
-          <a href="https://www.pinterest.com/michelinenailbar" target="_blank" rel="noopener" class="social-card social-pinterest" aria-label="Pinterest">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.937-.2-2.378.042-3.415.217-.937 1.402-5.938 1.402-5.938s-.357-.715-.357-1.784c0-1.672.968-2.92 2.181-2.92 1.03 0 1.526.774 1.526 1.7 0 1.036-.659 2.59-.998 4.027-.284 1.194.597 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.48 0-2.864-2.057-4.87-4.993-4.87-3.404 0-5.407 2.553-5.407 5.195 0 1.028.327 2.128.73 2.726.08.14.092.26.069.403-.075.315-.245 1.029-.282 1.173-.047.198-.155.239-.357.144-1.986-.993-3.23-4.106-3.23-6.62 0-3.766 2.745-7.223 7.912-7.223 4.155 0 7.385 2.96 7.385 6.922 0 4.13-2.603 7.46-6.213 7.46-1.213 0-2.354-.635-2.748-1.383 0 0-.603 2.294-.748 2.858-.27 1.045-1.004 2.352-1.498 3.146 1.123.347 2.314.535 3.58.535 6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-            <span>Pinterest</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- PIE DE PÁGINA -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <span class="nav-logo">Micheline <span>Nail Bar</span></span>
-        <p>Creando experiencias de belleza y momentos de relajación inolvidables en San Pedro y Boca Chica para ti.</p>
-        <div class="footer-socials">
-          <a href="https://www.instagram.com/michelinenailbar/" target="_blank" rel="noopener" aria-label="Instagram" class="footer-instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <a href="https://www.facebook.com/michelinenailbar/" target="_blank" rel="noopener" aria-label="Facebook" class="footer-facebook">
-             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="https://www.tiktok.com/@michelinenailbar" target="_blank" rel="noopener" aria-label="TikTok" class="footer-tiktok">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.66 1.94 2.89 2.89 0 0 1 5.66-1.94v-3.1a6.3 6.3 0 0 0-5.81 3.86 6.31 6.31 0 0 0 10.77-5.23V8.35a8.12 8.12 0 0 0 3.65.62V5.49a4.84 4.84 0 0 1-.88-.05z"/></svg>
-          </a>
-          <a href="https://x.com/michelinenailbar" target="_blank" rel="noopener" aria-label="X (Twitter)" class="footer-x">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7.5.881 11-2.5a17.46 17.46 0 001-4c0-.342-.023-.684-.067-1.025A11.36 11.36 0 0023 3z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/company/micheline-nail-bar" target="_blank" rel="noopener" aria-label="LinkedIn" class="footer-linkedin">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.44-.103.25-.129.599-.129.948v5.417h-3.554s.05-8.787 0-9.7h3.554v1.373c.43-.664 1.199-1.608 2.894-1.608 2.111 0 3.694 1.405 3.694 4.431v5.504zM5.337 8.855c-1.144 0-1.915-.759-1.915-1.71 0-.953.77-1.71 1.963-1.71 1.193 0 1.915.757 1.915 1.71 0 .951-.722 1.71-1.963 1.71zm1.572 11.597H3.767V9.557h3.142v10.895zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="https://www.youtube.com/@michelinenailbar" target="_blank" rel="noopener" aria-label="YouTube" class="footer-youtube">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </a>
-          <a href="https://www.pinterest.com/michelinenailbar" target="_blank" rel="noopener" aria-label="Pinterest" class="footer-pinterest">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.937-.2-2.378.042-3.415.217-.937 1.402-5.938 1.402-5.938s-.357-.715-.357-1.784c0-1.672.968-2.92 2.181-2.92 1.03 0 1.526.774 1.526 1.7 0 1.036-.659 2.59-.998 4.027-.284 1.194.597 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.480 0-2.864-2.057-4.87-4.993-4.87-3.404 0-5.407 2.553-5.407 5.195 0 1.028.327 2.128.73 2.726.08.14.092.26.069.403-.075.315-.245 1.029-.282 1.173-.047.198-.155.239-.357.144-1.986-.993-3.23-4.106-3.23-6.62 0-3.766 2.745-7.223 7.912-7.223 4.155 0 7.385 2.96 7.385 6.922 0 4.13-2.603 7.46-6.213 7.46-1.213 0-2.354-.635-2.748-1.383 0 0-.603 2.294-.748 2.858-.27 1.045-1.004 2.352-1.498 3.146 1.123.347 2.314.535 3.58.535 6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Navegación</h4>
-        <ul>
-          <li><a href="#about">Nuestra Historia</a></li>
-          <li><a href="#services">Menú de Servicios</a></li>
-          <li><a href="#pricing">Tarifas y Precios</a></li>
-          <li><a href="#team">Los Especialistas</a></li>
-          <li><a href="#gallery">Galería de Trabajos</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="#">Términos y Condiciones</a></li>
-          <li><a href="#">Política de Cancelación</a></li>
-          <li><a href="#">Privacidad</a></li>
-        </ul>
+      <div class="location-contact">
+        <a href="tel:8092465821"><span>Teléfono local</span>809-246-5821</a>
+        <a href="https://wa.me/18096277471" target="_blank"><span>WhatsApp</span>809-627-7471</a>
+        <a href="https://www.facebook.com/michelinenailbar/" target="_blank"><span>Redes sociales</span>@michelinenailbar</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; <span id="currentYear"></span> Micheline Nail Bar. Todos los derechos reservados.</p>
-      <p>Diseñado para Brillar por Micheline AI.</p>
+    <div class="location-card">
+      <span class="location-badge">Segunda Sucursal</span>
+      <div class="location-name">Boca Chica</div>
+      <div class="location-hours">
+        <div class="location-day"><span class="location-day-name">Lunes – Viernes</span><span class="location-day-time">7:00am – 9:00pm</span></div>
+        <div class="location-day"><span class="location-day-name">Sábados</span><span class="location-day-time">8:00am – 8:00pm</span></div>
+        <div class="location-day"><span class="location-day-name">Domingos</span><span class="location-day-time">8:00am – 6:00pm</span></div>
+      </div>
+      <div class="location-contact">
+        <a href="https://wa.me/18298233476" target="_blank"><span>WhatsApp</span>829-823-3476</a>
+        <a href="/cdn-cgi/l/email-protection#472a2e242f222b2e292229262e2b252635072f28332a262e2b6924282a"><span>Correo electrónico</span><span class="__cf_email__" data-cfemail="c1aca8a2a9a4ada8afa4afa0a8ada3a0b381a9aeb5aca0a8adefa2aeac">[email&#160;protected]</span></a>
+        <a href="https://www.instagram.com/michelinenailbar/" target="_blank"><span>Instagram</span>@michelinenailbar</a>
+      </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script type="module" src="./main.js"></script>
+<!-- BRANDS -->
+<section id="brands">
+  <div class="reveal">
+    <p class="section-label">Calidad garantizada</p>
+    <h2 class="section-title">Marcas que <em>Confiamos</em></h2>
+    <div class="gold-divider" style="margin:2rem auto;"></div>
+    <p style="opacity:0.5;font-size:0.9rem;margin-bottom:0;">Solo trabajamos con productos reconocidos de alta gama.</p>
+  </div>
+  <div class="brands-track-wrap">
+    <div class="brands-track">
+      <span class="brand-item">OPI</span>
+      <span class="brand-item">Alfaparf</span>
+      <span class="brand-item">Moroccan Oil</span>
+      <span class="brand-item">Gelish</span>
+      <span class="brand-item">Davines</span>
+      <span class="brand-item">Alter Ego</span>
+      <span class="brand-item">Morgan Taylor</span>
+      <span class="brand-item">Cuccio</span>
+      <span class="brand-item">Vitality's</span>
+      <span class="brand-item">Argan Oil</span>
+      <span class="brand-item">Sebastian</span>
+      <span class="brand-item">Fanola</span>
+      <span class="brand-item">Deya</span>
+      <!-- duplicado para loop infinito -->
+      <span class="brand-item">OPI</span>
+      <span class="brand-item">Alfaparf</span>
+      <span class="brand-item">Moroccan Oil</span>
+      <span class="brand-item">Gelish</span>
+      <span class="brand-item">Davines</span>
+      <span class="brand-item">Alter Ego</span>
+      <span class="brand-item">Morgan Taylor</span>
+      <span class="brand-item">Cuccio</span>
+      <span class="brand-item">Vitality's</span>
+      <span class="brand-item">Argan Oil</span>
+      <span class="brand-item">Sebastian</span>
+      <span class="brand-item">Fanola</span>
+      <span class="brand-item">Deya</span>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALTIES -->
+<section id="specialties" style="background:var(--black2);">
+  <div style="text-align:center;margin-bottom:4rem;" class="reveal">
+    <p class="section-label">Lo que nos hace únicos</p>
+    <h2 class="section-title">Servicios <em>Exclusivos</em></h2>
+    <div class="gold-divider" style="margin:2rem auto;"></div>
+  </div>
+  <div class="specialties-grid">
+    <div class="specialty-card reveal">
+      <div class="specialty-label">by OPI</div>
+      <div class="specialty-title">Gel Break</div>
+      <div class="specialty-desc">Dale un descanso a tus uñas sin dejar de pintarlas. Sistema enriquecido con hialuronato de sodio, vitaminas y extracto de bambú que recupera la vitalidad y elimina el amarillamiento en tan solo una semana.</div>
+    </div>
+    <div class="specialty-card reveal">
+      <div class="specialty-label">Tratamiento exclusivo</div>
+      <div class="specialty-title">Lavado Vitamina C</div>
+      <div class="specialty-desc">Nuestros lavapelos cuentan con filtros de carbón y vitamina C que eliminan el cloro, flúor, cloramina y metales pesados hasta el 99.9%. Tu cabello y piel lo notarán desde la primera sesión.</div>
+    </div>
+    <div class="specialty-card reveal">
+      <div class="specialty-label">Tecnología capilar</div>
+      <div class="specialty-title">Vaporizador & Plancha Fría</div>
+      <div class="specialty-desc">Combinamos el vapor profundo con plancha fría para lograr resultados extraordinarios minimizando el daño térmico. Tu cabello queda suave, brillante y saludable después de cada sesión.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-inner">
+    <div class="booking-info reveal">
+      <p class="section-label">Agenda online</p>
+      <h2 class="section-title">Reserva tu<br/><em>Experiencia</em></h2>
+      <div class="gold-divider"></div>
+      <p>Agenda tu cita en segundos. Te confirmamos por WhatsApp en menos de 1 hora.</p>
+      <div class="booking-detail">
+        <span class="booking-detail-icon">📍</span>
+        <div class="booking-detail-text">
+          <strong>Sucursales</strong>
+          San Pedro de Macorís · Boca Chica
+        </div>
+      </div>
+      <div class="booking-detail">
+        <span class="booking-detail-icon">🕐</span>
+        <div class="booking-detail-text">
+          <strong>Horario San Pedro</strong>
+          Lun–Vie: 7:00am–11:00pm · Sáb: 8am–10pm · Dom: 8am–6pm
+        </div>
+      </div>
+      <div class="booking-detail">
+        <span class="booking-detail-icon">📱</span>
+        <div class="booking-detail-text">
+          <strong>WhatsApp San Pedro</strong>
+          <a href="https://wa.me/18096277471" style="color:var(--gold);text-decoration:none;">809-627-7471</a>
+        </div>
+      </div>
+      <div class="booking-detail">
+        <span class="booking-detail-icon">📱</span>
+        <div class="booking-detail-text">
+          <strong>WhatsApp Boca Chica</strong>
+          <a href="https://wa.me/18298233476" style="color:var(--gold);text-decoration:none;">829-823-3476</a>
+        </div>
+      </div>
+      <div class="booking-detail">
+        <span class="booking-detail-icon">✉️</span>
+        <div class="booking-detail-text">
+          <strong>Correo</strong>
+          <a href="/cdn-cgi/l/email-protection#4d20242e252821242328232c24212f2c3f0d252239202c2421632e2220" style="color:var(--gold);text-decoration:none;"><span class="__cf_email__" data-cfemail="2845414b404d4441464d464941444a495a6840475c45494144064b4745">[email&#160;protected]</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="booking-form reveal">
+      <form id="appointmentForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required/>
+          </div>
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" placeholder="+1 (809) XXX-XXXX" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Sucursal</label>
+          <select required>
+            <option value="" disabled selected>Selecciona una sucursal</option>
+            <option>San Pedro de Macorís</option>
+            <option>Boca Chica</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Servicio deseado</label>
+          <select required>
+            <option value="" disabled selected>Selecciona un servicio</option>
+            <optgroup label="💅 Nail Bar">
+              <option>Manicure regular</option>
+              <option>Manicure Spa</option>
+              <option>Pedicure regular</option>
+              <option>Pedi Spa 4 pasos</option>
+              <option>Pintura en Gel</option>
+              <option>Uñas Acrílicas</option>
+              <option>Uñas Francesas</option>
+              <option>Soft Gel Tips / Baby Boomer</option>
+            </optgroup>
+            <optgroup label="✂️ Peluquería">
+              <option>Lavado de pelo</option>
+              <option>Corte de cabello</option>
+              <option>Peinado elaborado</option>
+              <option>Definición de rizos</option>
+            </optgroup>
+            <optgroup label="🌿 Otros">
+              <option>Depilación con cera</option>
+              <option>Maquillaje</option>
+              <option>Facial / Skincare</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Especialista preferida <span style="opacity:0.4;font-size:0.8em;">(opcional)</span></label>
+          <select id="specialistSelect">
+            <option value="">Sin preferencia</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Fecha preferida</label>
+            <input type="date" required/>
+          </div>
+          <div class="form-group">
+            <label>Hora preferida</label>
+            <input type="time" min="09:00" max="19:00" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Inspiración de estilo <span style="opacity:0.4;font-size:0.8em;">(opcional)</span></label>
+          <div class="inspo-trigger-bar" id="inspoTrigger" style="cursor:none;">
+            <div class="inspo-trigger-bar-text">
+              Explorar estilos en tendencia
+              <span>Elige una foto como referencia para tu especialista</span>
+            </div>
+            <span class="inspo-trigger-bar-icon">✨</span>
+          </div>
+          <div class="inspo-selected-preview" id="inspoPreview">
+            <img class="inspo-preview-img" id="inspoPreviewImg" src="" alt="Inspiración"/>
+            <div class="inspo-preview-info">
+              <div class="inspo-preview-name" id="inspoPreviewName"></div>
+              <div class="inspo-preview-sub">Imagen de referencia adjunta</div>
+            </div>
+            <button type="button" class="inspo-preview-remove" id="inspoRemove">✕ Quitar</button>
+          </div>
+          <input type="hidden" id="inspoImageUrl" name="inspoImageUrl"/>
+          <input type="hidden" id="inspoImageName" name="inspoImageName"/>
+        </div>
+        <div class="form-group">
+          <label>Nota adicional (opcional)</label>
+          <textarea placeholder="Diseño especial, alergias, etc."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Confirmar Reserva →</button>
+        <p class="form-note">Al enviar aceptas ser contactada por WhatsApp para confirmar tu cita.</p>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="check">✨</div>
+        <h3>¡Reserva enviada!</h3>
+        <p>Te contactaremos por WhatsApp en menos de 1 hora para confirmar tu cita.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="team-header reveal">
+    <p class="section-label">Conoce a nuestras especialistas</p>
+    <h2 class="section-title">Nuestro <em>Equipo</em></h2>
+    <div class="gold-divider"></div>
+    <p style="opacity:0.5;font-size:0.9rem;max-width:500px;margin:0 auto;">Elige a tu especialista favorita y agenda directamente con ella.</p>
+  </div>
+  <div class="team-grid" id="teamGrid">
+    <!-- Renderizado dinámicamente desde TEAM_CONFIG en el JS -->
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-header reveal">
+    <p class="section-label">Nuestro trabajo</p>
+    <h2 class="section-title">La <em>Galería</em></h2>
+    <div class="gold-divider"></div>
+    <p style="opacity:0.5;font-size:0.9rem;">Cada trabajo, una obra de arte.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-placeholder">💅<span>Featured Work</span></div>
+    </div>
+    <div class="gallery-item"><div class="gallery-placeholder">✨</div></div>
+    <div class="gallery-item"><div class="gallery-placeholder">💎</div></div>
+    <div class="gallery-item"><div class="gallery-placeholder">🌸</div></div>
+    <div class="gallery-item"><div class="gallery-placeholder">💄</div></div>
+    <div class="gallery-item"><div class="gallery-placeholder">👑</div></div>
+    <div class="gallery-item"><div class="gallery-placeholder">🦋</div></div>
+  </div>
+  <div class="gallery-cta reveal">
+    <a href="https://instagram.com" class="btn-outline" target="_blank">Ver más en Instagram →</a>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop">
+  <div class="shop-inner reveal">
+    <p class="section-label">Próximamente</p>
+    <h2 class="section-title">Nuestra <em>Tienda</em></h2>
+    <div class="gold-divider" style="margin:2rem auto;"></div>
+    <p>Lleva el lujo de Micheline a casa. Productos de belleza seleccionados por nuestras especialistas, disponibles próximamente en nuestra tienda online.</p>
+  </div>
+  <div class="shop-grid reveal">
+    <div class="shop-card">
+      <div class="shop-card-icon">💅</div>
+      <div class="shop-card-name">Nail Care</div>
+      <div class="shop-card-desc">Esmaltes y tratamientos para uñas</div>
+    </div>
+    <div class="shop-card">
+      <div class="shop-card-icon">✨</div>
+      <div class="shop-card-name">Skin Care</div>
+      <div class="shop-card-desc">Cremas, serums y mascarillas</div>
+    </div>
+    <div class="shop-card">
+      <div class="shop-card-icon">💇‍♀️</div>
+      <div class="shop-card-name">Hair Care</div>
+      <div class="shop-card-desc">Shampoos, aceites y tratamientos</div>
+    </div>
+  </div>
+  <div class="reveal" style="margin-top:2rem;">
+    <a href="#newsletter" class="btn-primary">Avísame cuando esté disponible</a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="newsletter-inner reveal">
+    <p class="section-label">Únete a nuestra comunidad</p>
+    <h2 class="section-title">Ofertas & <em>Novedades</em></h2>
+    <div class="gold-divider" style="margin:2rem auto;"></div>
+    <p>Recibe promociones exclusivas, tips de belleza y lanzamientos antes que nadie.</p>
+    <form class="newsletter-form" id="newsletterForm">
+      <input type="email" placeholder="Tu correo electrónico" required/>
+      <button type="submit">Suscribirse</button>
+    </form>
+  </div>
+</section>
+
+<!-- SOCIAL MEDIA -->
+<section id="social">
+  <div class="social-header reveal">
+    <p class="section-label">Contenido diario</p>
+    <h2 class="section-title">Síguenos en <em>Redes</em></h2>
+    <div class="gold-divider"></div>
+    <p>Publicamos tendencias, inspiración y promociones exclusivas todos los días. ¡Únete a nuestra comunidad y no te pierdas nada!</p>
+  </div>
+  <div class="social-grid reveal">
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/michelinenailbar/" target="_blank" class="social-card"
+       style="--sc-color:#E1306C;" onclick="trackSocial('instagram')">
+      <div class="social-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="#E1306C" stroke="none"/>
+        </svg>
+      </div>
+      <span class="social-name">Instagram</span>
+      <span class="social-handle">@michelinenailbar</span>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/michelinenailbar/" target="_blank" class="social-card"
+       style="--sc-color:#1877F2;" onclick="trackSocial('facebook')">
+      <div class="social-icon">
+        <svg viewBox="0 0 24 24" fill="#1877F2">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </div>
+      <span class="social-name">Facebook</span>
+      <span class="social-handle">michelinenailbar</span>
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@michelinenailbar" target="_blank" class="social-card"
+       style="--sc-color:#69C9D0;" onclick="trackSocial('tiktok')">
+      <div class="social-icon">
+        <svg viewBox="0 0 24 24" fill="#69C9D0">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.94a8.16 8.16 0 004.77 1.52V7.01a4.85 4.85 0 01-1-.32z"/>
+        </svg>
+      </div>
+      <span class="social-name">TikTok</span>
+      <span class="social-handle">@michelinenailbar</span>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@michelinenailbar" target="_blank" class="social-card"
+       style="--sc-color:#FF0000;" onclick="trackSocial('youtube')">
+      <div class="social-icon">
+        <svg viewBox="0 0 24 24" fill="#FF0000">
+          <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+      </div>
+      <span class="social-name">YouTube</span>
+      <span class="social-handle">@michelinenailbar</span>
+    </a>
+
+    <!-- Pinterest -->
+    <a href="https://www.pinterest.com/michelinenailbar" target="_blank" class="social-card"
+       style="--sc-color:#E60023;" onclick="trackSocial('pinterest')">
+      <div class="social-icon">
+        <svg viewBox="0 0 24 24" fill="#E60023">
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+        </svg>
+      </div>
+      <span class="social-name">Pinterest</span>
+      <span class="social-handle">michelinenailbar</span>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/company/michelinenailbar" target="_blank" class="social-card"
+       style="--sc-color:#0A66C2;" onclick="trackSocial('linkedin')">
+      <div class="social-icon">
+        <svg viewBox="0 0 24 24" fill="#0A66C2">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </div>
+      <span class="social-name">LinkedIn</span>
+      <span class="social-handle">michelinenailbar</span>
+    </a>
+
+    <!-- X / Twitter -->
+    <a href="https://x.com/michelinenailbar" target="_blank" class="social-card"
+       style="--sc-color:#ffffff;" onclick="trackSocial('x_twitter')">
+      <div class="social-icon">
+        <svg viewBox="0 0 24 24" fill="white">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </div>
+      <span class="social-name">X (Twitter)</span>
+      <span class="social-handle">@michelinenailbar</span>
+    </a>
+
+  </div>
+  <p class="social-follow-note reveal">✨ Contenido de belleza, tendencias y promociones — todos los días</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Micheline <span>Nail Bar</span></a>
+      <p style="margin-top:0.5rem;font-size:0.8rem;opacity:0.4;font-style:italic;">Tu lugar perfecto para mimarte</p>
+      <p style="margin-top:1rem;">Dos sucursales en San Pedro de Macorís y Boca Chica. Abiertos 7 días a la semana.</p>
+      <p style="margin-top:1rem;font-size:0.8rem;opacity:0.5;">📞 809-246-5821<br/>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3b565258535e5752555e555a5257595a497b53544f565a525715585456">[email&#160;protected]</a></p>
+      <!-- Social icons row en footer -->
+      <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;">
+        <a href="https://www.instagram.com/michelinenailbar/" target="_blank" style="opacity:0.5;transition:opacity 0.3s;color:var(--cream);text-decoration:none;font-size:0.65rem;letter-spacing:0.1em;" onmouseover="this.style.opacity=1;this.style.color='#E1306C'" onmouseout="this.style.opacity=0.5;this.style.color='var(--cream)'">IG</a>
+        <a href="https://www.facebook.com/michelinenailbar/" target="_blank" style="opacity:0.5;transition:opacity 0.3s;color:var(--cream);text-decoration:none;font-size:0.65rem;letter-spacing:0.1em;" onmouseover="this.style.opacity=1;this.style.color='#1877F2'" onmouseout="this.style.opacity=0.5;this.style.color='var(--cream)'">FB</a>
+        <a href="https://www.tiktok.com/@michelinenailbar" target="_blank" style="opacity:0.5;transition:opacity 0.3s;color:var(--cream);text-decoration:none;font-size:0.65rem;letter-spacing:0.1em;" onmouseover="this.style.opacity=1;this.style.color='#69C9D0'" onmouseout="this.style.opacity=0.5;this.style.color='var(--cream)'">TT</a>
+        <a href="https://www.youtube.com/@michelinenailbar" target="_blank" style="opacity:0.5;transition:opacity 0.3s;color:var(--cream);text-decoration:none;font-size:0.65rem;letter-spacing:0.1em;" onmouseover="this.style.opacity=1;this.style.color='#FF0000'" onmouseout="this.style.opacity=0.5;this.style.color='var(--cream)'">YT</a>
+        <a href="https://www.pinterest.com/michelinenailbar" target="_blank" style="opacity:0.5;transition:opacity 0.3s;color:var(--cream);text-decoration:none;font-size:0.65rem;letter-spacing:0.1em;" onmouseover="this.style.opacity=1;this.style.color='#E60023'" onmouseout="this.style.opacity=0.5;this.style.color='var(--cream)'">PT</a>
+        <a href="https://www.linkedin.com/company/michelinenailbar" target="_blank" style="opacity:0.5;transition:opacity 0.3s;color:var(--cream);text-decoration:none;font-size:0.65rem;letter-spacing:0.1em;" onmouseover="this.style.opacity=1;this.style.color='#0A66C2'" onmouseout="this.style.opacity=0.5;this.style.color='var(--cream)'">LI</a>
+        <a href="https://x.com/michelinenailbar" target="_blank" style="opacity:0.5;transition:opacity 0.3s;color:var(--cream);text-decoration:none;font-size:0.65rem;letter-spacing:0.1em;" onmouseover="this.style.opacity=1;this.style.color='#fff'" onmouseout="this.style.opacity=0.5;this.style.color='var(--cream)'">𝕏</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#services">Nail Bar & Manicure</a></li>
+        <li><a href="#services">Peluquería & Peinados</a></li>
+        <li><a href="#services">Pedi Spa</a></li>
+        <li><a href="#services">Uñas Acrílicas</a></li>
+        <li><a href="#services">Maquillaje</a></li>
+        <li><a href="#services">Depilación con Cera</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Especiales</h4>
+      <ul>
+        <li><a href="#specialties">OPI Gel Break</a></li>
+        <li><a href="#specialties">Lavado Vitamina C</a></li>
+        <li><a href="#specialties">Vaporizador & Plancha Fría</a></li>
+        <li><a href="#pricing">Lista de Precios</a></li>
+        <li><a href="#gallery">Galería</a></li>
+        <li><a href="#booking">Reservas</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Redes Sociales</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/michelinenailbar/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.facebook.com/michelinenailbar/" target="_blank">Facebook</a></li>
+        <li><a href="https://www.tiktok.com/@michelinenailbar" target="_blank">TikTok</a></li>
+        <li><a href="https://www.youtube.com/@michelinenailbar" target="_blank">YouTube</a></li>
+        <li><a href="https://www.pinterest.com/michelinenailbar" target="_blank">Pinterest</a></li>
+        <li><a href="https://www.linkedin.com/company/michelinenailbar" target="_blank">LinkedIn</a></li>
+        <li><a href="https://x.com/michelinenailbar" target="_blank">X (Twitter)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Micheline Nail Bar & Beauty Lounge. Todos los derechos reservados.</p>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/michelinenailbar/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/michelinenailbar/" target="_blank">Facebook</a>
+      <a href="https://www.tiktok.com/@michelinenailbar" target="_blank">TikTok</a>
+      <a href="https://x.com/michelinenailbar" target="_blank">X</a>
+      <a href="https://www.youtube.com/@michelinenailbar" target="_blank">YouTube</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ============================================================
+  //  MICHELINE NAIL BAR — WEBHOOK CONFIG
+  //  Solo cambia estos dos valores cuando tengas n8n listo.
+  //  Todo lo demás se conecta automáticamente.
+  // ============================================================
+  const WEBHOOK = {
+    url: 'https://n8nsophia.duckdns.org/webhook/429dc08d-c49a-4840-8938-d3878efe5f6c',
+    enabled: true   // ✅ ACTIVADO
+  };
+
+  // Función central de envío — todos los botones pasan por aquí
+  async function sendToWebhook(event, data = {}) {
+    const payload = { event, timestamp: new Date().toISOString(), source: 'web', ...data };
+    console.log('[n8n webhook]', event, payload);
+    if (!WEBHOOK.enabled) return;
+    try {
+      await fetch(WEBHOOK.url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch(err) { console.error('[webhook error]', err); }
+  }
+
+  // ============================================================
+  //  EVENTOS QUE LLEGAN A TU WORKFLOW EN n8n
+  //  Filtra por el campo "event" para separar los flujos:
+  //
+  //  "pagina_vista"      → visita nueva (analytics / CRM)
+  //  "reserva_iniciada"  → click en "Reservar Cita" (antes del form)
+  //  "reserva_enviada"   → formulario completado → disparar flujo WhatsApp
+  //  "ver_servicios"     → click en "Ver Servicios"
+  //  "ver_precios"       → navegó a sección precios
+  //  "whatsapp_click"    → tocó botón WhatsApp flotante
+  //  "tienda_interes"    → click en avísame de tienda
+  //  "newsletter_signup" → suscripción a newsletter
+  // ============================================================
+
+  // VISITA INICIAL
+  sendToWebhook('pagina_vista', { referrer: document.referrer || 'directo' });
+
+  // ============================================================
+  //  EQUIPO — CONFIGURACIÓN EDITABLE
+  //  Para actualizar el personal: edita solo este array.
+  //  Campos: name, role, tags (especialidades), photo (URL o ruta)
+  //  Si no hay foto disponible, se muestran las iniciales.
+  // ============================================================
+  const TEAM_CONFIG = [
+    {
+      id: 'yakaira',
+      name: 'Yakaira De Los Santos',
+      role: 'Técnica de Uñas',
+      tags: ['Nail Art', 'Acrílicos', 'Gel'],
+      photo: null  // reemplaza con: '/Content/img/team/yakaira.jpg'
+    },
+    {
+      id: 'yhon',
+      name: 'Yhon Salas',
+      role: 'Manicurista',
+      tags: ['Manicure', 'Pedicure', 'Gel'],
+      photo: null
+    },
+    {
+      id: 'yeimy',
+      name: 'Yeimy Ramírez',
+      role: 'Peluquera',
+      tags: ['Cortes', 'Peinados', 'Rizos'],
+      photo: null
+    },
+    {
+      id: 'olga',
+      name: 'Olga De La Cruz',
+      role: 'Manicurista',
+      tags: ['Manicure', 'Pedicure', 'Spa'],
+      photo: null
+    },
+    {
+      id: 'nelsida',
+      name: 'Nelsida P. Solano J.',
+      role: 'Técnica en Acrílico',
+      tags: ['Acrílicos', 'Porcelanato', 'Baby Boomer'],
+      photo: null
+    },
+    {
+      id: 'liliam',
+      name: 'Liliam Rodríguez',
+      role: 'Peluquera',
+      tags: ['Lavados', 'Peinados', 'Cortes'],
+      photo: null
+    },
+    {
+      id: 'rosenicole',
+      name: 'Rose Nicole Santana A.',
+      role: 'Peluquera',
+      tags: ['Lavados', 'Peinados', 'Tratamientos'],
+      photo: null
+    },
+    {
+      id: 'ruth',
+      name: 'Ruth D. De Leon J.',
+      role: 'Peluquera',
+      tags: ['Cortes', 'Peinados', 'Vitamina C'],
+      photo: null
+    },
+    {
+      id: 'yuderkis',
+      name: 'Yuderkis Salas (Mary)',
+      role: 'Peluquera',
+      tags: ['Lavados', 'Rizos', 'Vapor'],
+      photo: null
+    },
+  ];
+
+  // Función para obtener iniciales
+  function getInitials(name) {
+    return name.split(' ').slice(0, 2).map(n => n[0]).join('').toUpperCase();
+  }
+
+  // Renderizar team grid
+  function renderTeam() {
+    const grid = document.getElementById('teamGrid');
+    const select = document.getElementById('specialistSelect');
+    if (!grid) return;
+
+    TEAM_CONFIG.forEach(member => {
+      // Card
+      const card = document.createElement('div');
+      card.className = 'team-card reveal';
+      card.dataset.id = member.id;
+      card.innerHTML = `
+        <div class="team-selected-badge">✓</div>
+        <div class="team-photo-wrap">
+          ${member.photo
+            ? `<img src="${member.photo}" alt="${member.name}" loading="lazy"/>`
+            : `<div class="team-photo-initials">${getInitials(member.name)}</div>`
+          }
+        </div>
+        <div class="team-name">${member.name}</div>
+        <div class="team-role">${member.role}</div>
+        <div class="team-tags">
+          ${member.tags.map(t => `<span class="team-tag">${t}</span>`).join('')}
+        </div>
+        <button class="team-book-btn" type="button">Agendar con ella →</button>
+      `;
+
+      // Click en la card → pre-selecciona especialista y baja al form
+      card.addEventListener('click', () => {
+        // Quitar selección anterior
+        document.querySelectorAll('.team-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        // Actualizar select del formulario
+        select.value = member.id;
+        // Scroll suave al formulario
+        document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Evento webhook
+        sendToWebhook('especialista_seleccionada', { id: member.id, nombre: member.name, rol: member.role });
+      });
+
+      grid.appendChild(card);
+
+      // Opción en el select del formulario
+      const opt = document.createElement('option');
+      opt.value = member.id;
+      opt.textContent = `${member.name} — ${member.role}`;
+      select.appendChild(opt);
+    });
+
+    // Si cambian el select manualmente, resaltar la card correspondiente
+    select.addEventListener('change', () => {
+      document.querySelectorAll('.team-card').forEach(c => {
+        c.classList.toggle('selected', c.dataset.id === select.value);
+      });
+    });
+
+    // Activar observer para animaciones de las cards generadas dinámicamente
+    document.querySelectorAll('.team-card.reveal').forEach(el => observer.observe(el));
+  }
+
+  // ============================================================
+  //  INSPIRACIÓN — Catálogo de estilos en tendencia
+  //  Para agregar/editar estilos: modifica el array INSPO_CATALOG
+  //  Cada item: { id, name, category, img (URL de imagen), tags }
+  // ============================================================
+  const INSPO_CATALOG = [
+    // PEINADOS
+    { id:'p1', name:'Rizos Naturales Definidos', category:'Peinados', img:'https://images.unsplash.com/photo-1612363148021-f35e96f0bb01?w=400&h=533&fit=crop', tags:'rizos,natural,cabello afro' },
+    { id:'p2', name:'Trenzas Box Braids', category:'Peinados', img:'https://images.unsplash.com/photo-1610154595578-7f4c51b62f62?w=400&h=533&fit=crop', tags:'trenzas,box braids,protector' },
+    { id:'p3', name:'Ondas Románticas', category:'Peinados', img:'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=400&h=533&fit=crop', tags:'ondas,romantico,elegante' },
+    { id:'p4', name:'Peinado Updo Elegante', category:'Peinados', img:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=533&fit=crop', tags:'updo,recogido,elegante,evento' },
+    { id:'p5', name:'Cabello Suelto Lacio', category:'Peinados', img:'https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?w=400&h=533&fit=crop', tags:'lacio,suelto,brillante' },
+    { id:'p6', name:'Half Up Half Down', category:'Peinados', img:'https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?w=400&h=533&fit=crop', tags:'semi recogido,casual,elegante' },
+    // CORTES
+    { id:'c1', name:'Bob Moderno', category:'Cortes', img:'https://images.unsplash.com/photo-1576426863848-c21f53c60b19?w=400&h=533&fit=crop', tags:'bob,corto,moderno,tendencia' },
+    { id:'c2', name:'Layers con Flequillo', category:'Cortes', img:'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=533&fit=crop', tags:'layers,flequillo,volumen' },
+    { id:'c3', name:'Pixie Cut', category:'Cortes', img:'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&h=533&fit=crop', tags:'pixie,corto,atrevido' },
+    { id:'c4', name:'Lob (Long Bob)', category:'Cortes', img:'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=533&fit=crop', tags:'lob,largo,bob,mediano' },
+    { id:'c5', name:'Corte en Capas', category:'Cortes', img:'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=400&h=533&fit=crop', tags:'capas,movimiento,largo' },
+    { id:'c6', name:'Blunt Cut Recto', category:'Cortes', img:'https://images.unsplash.com/photo-1590400616991-39c94bfa6b62?w=400&h=533&fit=crop', tags:'recto,blunt,limpio,moderno' },
+    // UÑAS
+    { id:'u1', name:'French Tip Moderno', category:'Uñas', img:'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=533&fit=crop', tags:'french,uñas,clasico,elegante' },
+    { id:'u2', name:'Ombre Nude & Gold', category:'Uñas', img:'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=533&fit=crop&sat=-20&hue=40', tags:'ombre,nude,dorado,gel' },
+    { id:'u3', name:'Nail Art Floral', category:'Uñas', img:'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=533&fit=crop&bri=10', tags:'floral,nail art,diseño,verano' },
+    { id:'u4', name:'Acrílicas Largas Nude', category:'Uñas', img:'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&h=533&fit=crop&con=-10', tags:'acrilicas,largas,nude,natural' },
+    // MAQUILLAJE
+    { id:'m1', name:'Smokey Eye Intenso', category:'Maquillaje', img:'https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d?w=400&h=533&fit=crop', tags:'smokey eye,noche,intenso,glamour' },
+    { id:'m2', name:'Maquillaje Natural / No-Makeup', category:'Maquillaje', img:'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=533&fit=crop', tags:'natural,dia,suave,piel' },
+    { id:'m3', name:'Glam Dorado', category:'Maquillaje', img:'https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=400&h=533&fit=crop', tags:'glam,dorado,fiesta,gala' },
+    { id:'m4', name:'Delineado Cat Eye', category:'Maquillaje', img:'https://images.unsplash.com/photo-1519235624215-85175d5eb36e?w=400&h=533&fit=crop', tags:'cat eye,delineado,clasico' },
+  ];
+
+  let inspoChosen = null;
+
+  function buildInspoModal() {
+    const modal = document.createElement('div');
+    modal.className = 'inspo-modal';
+    modal.id = 'inspoModal';
+    const categories = ['Todos', ...new Set(INSPO_CATALOG.map(i => i.category))];
+    modal.innerHTML = `
+      <div class="inspo-modal-header">
+        <div>
+          <p class="section-label" style="margin-bottom:0.3rem;">Galería de tendencias</p>
+          <h2 class="inspo-modal-title">Elige tu <em>Inspiración</em></h2>
+        </div>
+        <button class="inspo-modal-close" id="inspoClose">✕</button>
+      </div>
+      <div class="inspo-modal-toolbar">
+        <div class="inspo-categories" id="inspoCategories">
+          ${categories.map((c,i) => `<button class="inspo-cat-btn ${i===0?'active':''}" data-cat="${c}">${c}</button>`).join('')}
+        </div>
+        <div class="inspo-search-wrap">
+          <span class="inspo-search-icon">🔍</span>
+          <input class="inspo-search" id="inspoSearch" type="text" placeholder="Buscar estilo..."/>
+        </div>
+      </div>
+      <div class="inspo-modal-body">
+        <div class="inspo-grid" id="inspoGrid"></div>
+        <div class="inspo-no-results" id="inspoNoResults">No encontramos ese estilo 🌸</div>
+      </div>
+      <div class="inspo-modal-footer">
+        <span class="inspo-footer-info" id="inspoFooterInfo">Selecciona una imagen para adjuntarla a tu reserva</span>
+        <button class="inspo-confirm-btn" id="inspoConfirm" disabled>Confirmar selección →</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    let activeCategory = 'Todos';
+    let searchTerm = '';
+
+    function renderGrid() {
+      const grid = document.getElementById('inspoGrid');
+      const noRes = document.getElementById('inspoNoResults');
+      const filtered = INSPO_CATALOG.filter(item => {
+        const matchCat = activeCategory === 'Todos' || item.category === activeCategory;
+        const matchSearch = !searchTerm || item.name.toLowerCase().includes(searchTerm) || item.tags.includes(searchTerm);
+        return matchCat && matchSearch;
+      });
+      grid.innerHTML = '';
+      noRes.style.display = filtered.length === 0 ? 'block' : 'none';
+      filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = `inspo-card${inspoChosen?.id === item.id ? ' chosen' : ''}`;
+        card.innerHTML = `
+          <img src="${item.img}" alt="${item.name}" loading="lazy"/>
+          <div class="inspo-card-overlay">
+            <div class="inspo-card-tag">${item.category}</div>
+            <div class="inspo-card-name">${item.name}</div>
+            <button class="inspo-card-select-btn" type="button">
+              ${inspoChosen?.id === item.id ? '✓ Seleccionada' : 'Elegir este estilo'}
+            </button>
+          </div>
+          <div class="inspo-card-chosen-badge">✓</div>
+        `;
+        card.addEventListener('click', () => {
+          inspoChosen = item;
+          document.getElementById('inspoConfirm').disabled = false;
+          document.getElementById('inspoFooterInfo').textContent = `Seleccionada: ${item.name}`;
+          renderGrid();
+          sendToWebhook('inspiracion_vista', { id: item.id, nombre: item.name, categoria: item.category });
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    // Category filter
+    document.getElementById('inspoCategories').addEventListener('click', e => {
+      if (!e.target.classList.contains('inspo-cat-btn')) return;
+      document.querySelectorAll('.inspo-cat-btn').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      activeCategory = e.target.dataset.cat;
+      renderGrid();
+    });
+
+    // Search
+    document.getElementById('inspoSearch').addEventListener('input', e => {
+      searchTerm = e.target.value.toLowerCase().trim();
+      renderGrid();
+    });
+
+    // Close
+    document.getElementById('inspoClose').addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+
+    // Confirm
+    document.getElementById('inspoConfirm').addEventListener('click', () => {
+      if (!inspoChosen) return;
+      // Actualizar el formulario
+      document.getElementById('inspoImageUrl').value = inspoChosen.img;
+      document.getElementById('inspoImageName').value = inspoChosen.name;
+      // Mostrar preview en el form
+      document.getElementById('inspoPreviewImg').src = inspoChosen.img;
+      document.getElementById('inspoPreviewName').textContent = inspoChosen.name;
+      document.getElementById('inspoPreview').classList.add('active');
+      modal.classList.remove('open');
+      sendToWebhook('inspiracion_seleccionada', { id: inspoChosen.id, nombre: inspoChosen.name, categoria: inspoChosen.category, imagen: inspoChosen.img });
+    });
+
+    renderGrid();
+    return modal;
+  }
+
+  // Inicializar modal
+  const inspoModal = buildInspoModal();
+
+  // Abrir modal al tocar el trigger bar
+  document.getElementById('inspoTrigger').addEventListener('click', () => {
+    inspoModal.classList.add('open');
+  });
+
+  // Quitar inspiración seleccionada
+  document.getElementById('inspoRemove').addEventListener('click', () => {
+    inspoChosen = null;
+    document.getElementById('inspoImageUrl').value = '';
+    document.getElementById('inspoImageName').value = '';
+    document.getElementById('inspoPreview').classList.remove('active');
+  });
+
+  // ============================================================
+  //  CURSOR PERSONALIZADO
+  const cursor = document.getElementById('cursor');
+  const cursorRing = document.getElementById('cursorRing');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    setTimeout(() => {
+      cursorRing.style.left = e.clientX + 'px';
+      cursorRing.style.top = e.clientY + 'px';
+    }, 80);
+  });
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%,-50%) scale(2.5)');
+    el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%,-50%) scale(1)');
+  });
+
+  // NAVBAR SCROLL
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // REVEAL ON SCROLL
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Renderizar equipo dinámicamente (debe ir después del observer)
+  renderTeam();
+
+  // BOTONES "RESERVAR CITA" → evento reserva_iniciada
+  document.querySelectorAll('a[href="#booking"]').forEach(btn => {
+    btn.addEventListener('click', () =>
+      sendToWebhook('reserva_iniciada', { origen: btn.closest('section')?.id || 'nav' })
+    );
+  });
+
+  // BOTONES "VER SERVICIOS" → evento ver_servicios
+  document.querySelectorAll('a[href="#services"]').forEach(btn => {
+    btn.addEventListener('click', () =>
+      sendToWebhook('ver_servicios', { origen: btn.closest('section')?.id || 'nav' })
+    );
+  });
+
+  // BOTONES "PRECIOS" → evento ver_precios
+  document.querySelectorAll('a[href="#pricing"]').forEach(btn => {
+    btn.addEventListener('click', () => sendToWebhook('ver_precios', {}));
+  });
+
+  // ============================================================
+  //  CHAT WIDGET — Motor de conversación (robusto)
+  // ============================================================
+  (function initChat() {
+    const fab      = document.getElementById('chatFab');
+    const win      = document.getElementById('chatWindow');
+    const msgs     = document.getElementById('chatMessages');
+    const input    = document.getElementById('chatInput');
+    const sendBtn  = document.getElementById('chatSend');
+    const quick    = document.getElementById('chatQuick');
+    const badge    = document.getElementById('chatBadge');
+
+    if (!fab || !win) { console.warn('[Chat] elementos no encontrados'); return; }
+
+    let isOpen     = false;
+    let greeted    = false;
+    let sessionId  = 'web_' + Date.now();
+
+    function now() {
+      return new Date().toLocaleTimeString('es-DO', { hour:'2-digit', minute:'2-digit' });
+    }
+
+    function addMsg(html, type) {
+      const d = document.createElement('div');
+      d.className = 'chat-msg ' + type;
+      d.innerHTML = html + '<div class="chat-msg-time">' + now() + '</div>';
+      msgs.appendChild(d);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    function showTyping() {
+      removeTyping();
+      const t = document.createElement('div');
+      t.className = 'chat-typing'; t.id = 'chatTyping';
+      t.innerHTML = '<span></span><span></span><span></span>';
+      msgs.appendChild(t);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+    function removeTyping() {
+      const t = document.getElementById('chatTyping');
+      if (t) t.remove();
+    }
+
+    function greet() {
+      if (greeted) return;
+      greeted = true;
+      if (badge) badge.style.display = 'none';
+      showTyping();
+      setTimeout(() => {
+        removeTyping();
+        addMsg('👋 ¡Hola! Bienvenida a <strong>Micheline Nail Bar</strong>.<br/>Soy tu asistente. ¿En qué puedo ayudarte hoy?', 'bot');
+      }, 900);
+    }
+
+    // ── Abrir / cerrar ──────────────────────────────────────────
+    function toggleChat() {
+      isOpen = !isOpen;
+      fab.classList.toggle('open', isOpen);
+      win.classList.toggle('open', isOpen);
+      if (isOpen) {
+        greet();
+        setTimeout(() => input.focus(), 300);
+      }
+      try { sendToWebhook('chat_' + (isOpen ? 'abierto' : 'cerrado'), { sessionId }); } catch(e) {}
+    }
+
+    fab.addEventListener('click',  function(e) { e.stopPropagation(); toggleChat(); });
+    fab.addEventListener('touchend', function(e) { e.preventDefault(); e.stopPropagation(); toggleChat(); });
+
+    // Cerrar al hacer clic fuera
+    document.addEventListener('click', function(e) {
+      if (isOpen && !win.contains(e.target) && e.target !== fab) {
+        isOpen = false;
+        fab.classList.remove('open');
+        win.classList.remove('open');
+      }
+    });
+
+    // ── Enviar mensaje ───────────────────────────────────────────
+    async function send(text) {
+      text = text.trim();
+      if (!text) return;
+
+      addMsg(text, 'user');
+      input.value = '';
+      input.style.height = 'auto';
+      quick.style.display = 'none';
+      showTyping();
+
+      let respuesta = null;
+      try {
+        const res = await fetch(WEBHOOK.url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event: 'chat_mensaje',
+            sessionId,
+            mensaje: text,
+            timestamp: new Date().toISOString(),
+            source: 'web_chat'
+          })
+        });
+        if (res.ok) {
+          const data = await res.json().catch(() => ({}));
+          respuesta = data.reply || data.message || data.output || data.text || data.respuesta || null;
+        }
+      } catch(err) {
+        console.warn('[Chat] webhook error:', err);
+      }
+
+      removeTyping();
+      addMsg(respuesta || '✅ ¡Mensaje recibido! Nuestro equipo te responderá pronto por WhatsApp.', 'bot');
+    }
+
+    sendBtn.addEventListener('click', () => send(input.value));
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(input.value); }
+    });
+
+    input.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 80) + 'px';
+    });
+
+    quick.addEventListener('click', function(e) {
+      const btn = e.target.closest('.chat-quick-btn');
+      if (btn) send(btn.dataset.msg);
+    });
+
+    console.log('[Chat] ✅ Widget inicializado correctamente');
+  })();
+
+  // REDES SOCIALES → tracking de clicks
+  function trackSocial(red) {
+    sendToWebhook('social_click', { red });
+  }
+
+  // TIENDA → evento tienda_interes
+  document.querySelectorAll('a[href="#newsletter"]').forEach(btn => {
+    btn.addEventListener('click', () => sendToWebhook('tienda_interes', {}));
+  });
+
+  // FORMULARIO DE RESERVA → evento reserva_enviada (flujo principal de n8n)
+  document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const f = e.target;
+    const data = {
+      nombre:        f.querySelector('input[type=text]').value,
+      telefono:      f.querySelector('input[type=tel]').value,
+      sucursal:      f.querySelectorAll('select')[0].value,
+      servicio:      f.querySelectorAll('select')[1].value,
+      especialista:  f.querySelector('#specialistSelect').value || 'Sin preferencia',
+      fecha:         f.querySelector('input[type=date]').value,
+      hora:          f.querySelector('input[type=time]').value,
+      nota:          f.querySelector('textarea').value,
+      inspiracion_nombre: f.querySelector('#inspoImageName').value || null,
+      inspiracion_imagen: f.querySelector('#inspoImageUrl').value || null,
+    };
+    const btn = f.querySelector('.form-submit');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    await sendToWebhook('reserva_enviada', data);
+    f.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+
+  // NEWSLETTER → evento newsletter_signup
+  document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const email = e.target.querySelector('input[type=email]').value;
+    await sendToWebhook('newsletter_signup', { email });
+ 
+    const nBtn = e.target.querySelector('button');
+    nBtn.textContent = '¡Suscrita! ✓';
+    nBtn.style.cssText += ';background:#2d7a3a;border-color:#2d7a3a;';
+  });
+
+  // ============================================================
+  //  SCROLL INTERNO — Fix para entornos iframe (claudeusercontent)
+  //  Intercepta todos los links de ancla y usa scrollIntoView
+  //  en lugar de navegación de URL.
+  // ============================================================
+  document.addEventListener('click', function(e) {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const hash = a.getAttribute('href');
+    if (hash === '#') return;
+    const target = document.querySelector(hash);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+</script>
 </body>
 </html>
