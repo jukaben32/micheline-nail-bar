@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- BOOKING FORM INTEGRATION WITH N8N ---
   const bookingForm = document.getElementById('appointmentForm');
-  const N8N_WEBHOOK_URL = 'https://n8nsophia.duckdns.org/webhook/micheline-booking';
+  const N8N_WEBHOOK_URL = 'https://n8nsophia.duckdns.org/webhook/429dc08d-c49a-4840-8938-d3878efe5f6c';
   
   if (bookingForm) {
     bookingForm.addEventListener('submit', async (e) => {
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- NEWSLETTER INTEGRATION WITH N8N ---
   const newsletterForm = document.getElementById('newsletterForm');
-  const N8N_NEWSLETTER_WEBHOOK = 'https://n8nsophia.duckdns.org/webhook/micheline-newsletter';
+  const N8N_NEWSLETTER_WEBHOOK = 'https://n8nsophia.duckdns.org/webhook/429dc08d-c49a-4840-8938-d3878efe5f6c';
   
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', async (e) => {
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- SOCIAL TRACKING WITH N8N ---
-  const N8N_SOCIAL_WEBHOOK = 'https://n8nsophia.duckdns.org/webhook/micheline-social-click';
+  const N8N_SOCIAL_WEBHOOK = 'https://n8nsophia.duckdns.org/webhook/429dc08d-c49a-4840-8938-d3878efe5f6c';
   
   document.querySelectorAll('.footer-socials a, .social-card').forEach(link => {
     link.addEventListener('click', (e) => {
