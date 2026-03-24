@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Micheline Nail Bar & Beauty Lounge — Tu lugar perfecto para mimarte</title>
+  <meta name="description" content="Experiencia de belleza de lujo en San Pedro de Macorís y Boca Chica. Reserva tu cita para uñas acrílicas, peluquería, pedispa y depilación." />
+  
+  <meta property="og:title" content="Micheline Nail Bar & Beauty Lounge" />
+  <meta property="og:description" content="Una experiencia de belleza de lujo en San Pedro de Macorís y Boca Chica." />
+  <meta property="og:url" content="https://michelinenailbar.com" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#080808" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "name": "Micheline Nail Bar & Beauty Lounge",
+    "url": "https://michelinenailbar.com",
+    "priceRange": "$$",
+    "address": [
+      {
+        "@type": "PostalAddress",
+        "addressLocality": "San Pedro de Macorís",
+        "addressCountry": "DO"
+      },
+      {
+        "@type": "PostalAddress",
+        "addressLocality": "Boca Chica",
+        "addressCountry": "DO"
+      }
+    ],
+    "telephone": "+18096277471"
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <!-- Cursor Personalizado -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- WIDGET DE CHAT (WhatsApp) -->
+  <button class="chat-fab" id="chatFab" aria-label="Abrir chat">
+    <div class="chat-badge" id="chatBadge">1</div>
+    <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="close-icon" style="display:none; font-size:1.4rem; color:white;">✕</span>
+  </button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-win-header">
+      <div class="chat-win-avatar">M</div>
+      <div class="chat-win-info">
+        <div class="chat-win-name">Micheline Nail Bar</div>
+        <div class="chat-win-status">En línea ahora</div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">¡Hola! Bienvenida a Micheline. ¿En qué te podemos ayudar hoy? 🥂</div>
+    </div>
+    <div class="chat-quick" id="chatQuick">
+      <button class="chat-quick-btn" data-msg="Quiero reservar una cita">📅 Reservar cita</button>
+      <button class="chat-quick-btn" data-msg="¿Cuáles son los precios?">💰 Ver precios</button>
+      <button class="chat-quick-btn" data-msg="¿Cuál es el horario?">🕐 Horario</button>
+    </div>
+    <div class="chat-input-row">
+      <textarea class="chat-input" id="chatInput" placeholder="Escribe tu mensaje..." rows="1"></textarea>
+      <button class="chat-send-btn" id="chatSend" aria-label="Enviar mensaje">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <div class="chat-disclaimer">Desarrollado por Micheline AI · vía WhatsApp</div>
+  </div>
+
+  <!-- NAVEGACIÓN -->
+  <header id="navbar">
+    <a href="#" class="nav-logo">Micheline <span>Nail Bar</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">Nosotras</a></li>
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#team">Equipo</a></li>
+      <li><a href="#pricing">Precios</a></li>
+      <li><a href="#locations">Sucursales</a></li>
+      <li><a href="#gallery">Galería</a></li>
+    </ul>
+    <a href="#booking" class="nav-cta">Reservar Cita</a>
+  </header>
+
+  <!-- HÉROE -->
+  <main>
+    <section id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-rose-accent"></div>
+      <div class="hero-lines"></div>
+      <div class="hero-gold-line"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Experiencia de belleza de lujo</p>
+        <h1 class="hero-title">Micheline<br/><em>Bar de uñas</em></h1>
+        <p class="hero-subtitle">Tu lugar perfecto para mimarte</p>
+        <div class="hero-ctas">
+          <a href="#booking" class="btn-primary">Reservar Cita</a>
+          <a href="#services" class="btn-outline">Ver Servicios</a>
+        </div>
+      </div>
+      <div class="hero-scroll" id="heroScrollBtn">
+        <span>Desplazarse</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ESTADÍSTICAS -->
+    <section class="stats-bar reveal">
+      <div class="stat-item">
+        <span class="stat-num">2</span>
+        <span class="stat-label">Sucursales</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">13+</span>
+        <span class="stat-label">Marcas premium</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Servicios Especializados</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">5<span style="font-size:0.8em;color:var(--gold);">★</span></span>
+        <span class="stat-label">Valoración Positiva</span>
+      </div>
+    </section>
+
+    <!-- ACERCA DE -->
+    <section id="about">
+      <div class="about-text reveal">
+        <p class="section-label">Nuestra historia</p>
+        <h2 class="section-title">Arte & <em>Belleza</em><br/>en cada detalle</h2>
+        <div class="gold-divider"></div>
+        <p>En Micheline Nail Bar & Beauty Lounge creemos que la belleza es una forma de autocuidado y expresión personal. Con dos sucursales en San Pedro de Macorís y Boca Chica, llevamos el lujo al alcance de toda mujer.</p>
+        <p>Nuestro equipo de especialistas utiliza exclusivamente marcas de alta gama como OPI, Alfaparf, Moroccan Oil, Gelish y Davines, para ofrecerte resultados que superan las expectativas en cada visita.</p>
+        <a href="#booking" class="btn-primary" style="display:inline-block;margin-top:2rem;">Agenda tu cita</a>
+      </div>
+      <div class="about-image reveal">
+        <div class="about-image-inner">
+          <span class="about-image-text">Micheline</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="services">
+      <div class="services-header reveal">
+        <p class="section-label">Lo que ofrecemos</p>
+        <h2 class="section-title">Servicios <em>Premium</em></h2>
+        <div class="gold-divider"></div>
+      </div>
+      <div class="services-grid">
+        <article class="service-card reveal">
+          <span class="service-icon" aria-hidden="true">💅</span>
+          <h3 class="service-name">Nail Bar</h3>
+          <p class="service-desc">Manicura, pedicura, uñas en gel, acrílicos y todo lo que necesitas para unas manos perfectas.</p>
+          <span class="service-price-range">Desde RD$200</span>
+        </article>
+        <article class="service-card reveal">
+          <span class="service-icon" aria-hidden="true">🦶</span>
+          <h3 class="service-name">Pedi Spa</h3>
+          <p class="service-desc">Tratamiento de lujo en 4 pasos para tus pies. Exfoliación, hidratación y relajación total.</p>
+          <span class="service-price-range">Desde RD$350</span>
+        </article>
+        <article class="service-card reveal">
+          <span class="service-icon" aria-hidden="true">✨</span>
+          <h3 class="service-name">Uñas Acrílicas</h3>
+          <p class="service-desc">Francesas, baby boomer, porcelanato, soft gel tips. Diseños únicos y personalizados.</p>
+          <span class="service-price-range">Desde RD$300</span>
+        </article>
+        <article class="service-card reveal">
+          <span class="service-icon" aria-hidden="true">💇‍♀️</span>
+          <h3 class="service-name">Peluquería</h3>
+          <p class="service-desc">Lavados, cortes, peinados elaborados y definición de rizos. Tu cabello, transformado.</p>
+          <span class="service-price-range">Desde RD$300</span>
+        </article>
+        <article class="service-card reveal">
+          <span class="service-icon" aria-hidden="true">🌿</span>
+          <h3 class="service-name">Depilación con cera</h3>
+          <p class="service-desc">Cejas, axilas, bikini, brasileño y más. Resultados duraderos con técnica profesional.</p>
+          <span class="service-price-range">Desde RD$200</span>
+        </article>
+        <article class="service-card reveal">
+          <span class="service-icon" aria-hidden="true">💄</span>
+          <h3 class="service-name">Maquillaje & Facial</h3>
+          <p class="service-desc">Maquillaje profesional para cualquier ocasión y tratamientos faciales que renuevan tu piel.</p>
+          <span class="service-price-range">Desde RD$300</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- LISTA DE PRECIOS -->
+    <section id="pricing">
+      <div class="pricing-intro reveal">
+        <p class="section-label">Transparencia total</p>
+        <h2 class="section-title">Lista de <em>Precios</em></h2>
+        <div class="gold-divider"></div>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-category reveal">
+          <h3 class="price-cat-title">✂️ Peluquería</h3>
+          <div class="price-item"><span class="price-item-name">Lavado regular</span><span class="price-item-dots"></span><span class="price-item-value">RD$300</span></div>
+          <div class="price-item"><span class="price-item-name">Lavado con línea</span><span class="price-item-dots"></span><span class="price-item-value">RD$750</span></div>
+          <div class="price-item"><span class="price-item-name">Corte de puntas</span><span class="price-item-dots"></span><span class="price-item-value">RD$350</span></div>
+          <div class="price-item"><span class="price-item-name">Corte elaborado</span><span class="price-item-dots"></span><span class="price-item-value">RD$1,000</span></div>
+          <div class="price-item"><span class="price-item-name">Peinado elaborado</span><span class="price-item-dots"></span><span class="price-item-value">RD$350</span></div>
+          <div class="price-item"><span class="price-item-name">Definición de rizos</span><span class="price-item-dots"></span><span class="price-item-value">RD$700</span></div>
+        </div>
+        <div class="price-category reveal">
+          <h3 class="price-cat-title">💅 Mani & Pedi</h3>
+          <div class="price-item"><span class="price-item-name">Manicure regular</span><span class="price-item-dots"></span><span class="price-item-value">RD$300</span></div>
+          <div class="price-item"><span class="price-item-name">Manicura Spa</span><span class="price-item-dots"></span><span class="price-item-value">RD$500</span></div>
+          <div class="price-item"><span class="price-item-name">Pedicura regular</span><span class="price-item-dots"></span><span class="price-item-value">RD$350</span></div>
+          <div class="price-item"><span class="price-item-name">Pedi Spa 4 pasos</span><span class="price-item-dots"></span><span class="price-item-value">RD$950</span></div>
+          <div class="price-item"><span class="price-item-name">Pintura en Gel</span><span class="price-item-dots"></span><span class="price-item-value">RD$450</span></div>
+          <div class="price-item"><span class="price-item-name">Pintura regular</span><span class="price-item-dots"></span><span class="price-item-value">RD$200</span></div>
+        </div>
+        <div class="price-category reveal">
+          <h3 class="price-cat-title">✨ Uñas Acrílicas</h3>
+          <div class="price-item"><span class="price-item-name">Uñas Acrílicas Reg.</span><span class="price-item-dots"></span><span class="price-item-value">RD$350</span></div>
+          <div class="price-item"><span class="price-item-name">Uñas Acrílicas Pies</span><span class="price-item-dots"></span><span class="price-item-value">RD$300</span></div>
+          <div class="price-item"><span class="price-item-name">Uñas Francesas</span><span class="price-item-dots"></span><span class="price-item-value">RD$500</span></div>
+          <div class="price-item"><span class="price-item-name">Soft Gel Tips</span><span class="price-item-dots"></span><span class="price-item-value">RD$900</span></div>
+          <div class="price-item"><span class="price-item-name">Baby Boomer</span><span class="price-item-dots"></span><span class="price-item-value">RD$900</span></div>
+          <div class="price-item"><span class="price-item-name">Porcelanato</span><span class="price-item-dots"></span><span class="price-item-value">RD$750</span></div>
+        </div>
+        <div class="price-category reveal">
+          <h3 class="price-cat-title">🌿 Depilación con Cera</h3>
+          <div class="price-item"><span class="price-item-name">Cejas</span><span class="price-item-dots"></span><span class="price-item-value">RD$200</span></div>
+          <div class="price-item"><span class="price-item-name">Axilas</span><span class="price-item-dots"></span><span class="price-item-value">RD$300</span></div>
+          <div class="price-item"><span class="price-item-name">Bikini</span><span class="price-item-dots"></span><span class="price-item-value">RD$550</span></div>
+          <div class="price-item"><span class="price-item-name">Brasileño</span><span class="price-item-dots"></span><span class="price-item-value">RD$1,600</span></div>
+          <div class="price-item"><span class="price-item-name">Medias piernas</span><span class="price-item-dots"></span><span class="price-item-value">RD$700</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UBICACIONES -->
+    <section id="locations" class="section-locations">
+      <div class="reveal text-center" style="text-align:center; padding-bottom:3rem;">
+        <p class="section-label">Encuéntranos</p>
+        <h2 class="section-title">Nuestras <em>Sucursales</em></h2>
+        <div class="gold-divider" style="margin:2rem auto;"></div>
+      </div>
+      <div class="locations-grid reveal">
+        <div class="location-card">
+          <span class="location-badge">Sucursal Principal</span>
+          <h3 class="location-name">San Pedro de Macorís</h3>
+          <div class="location-hours">
+            <div class="location-day"><span class="location-day-name">Lunes – Viernes</span><span class="location-day-time">7:00am – 11:00pm</span></div>
+            <div class="location-day"><span class="location-day-name">Sábados</span><span class="location-day-time">8:00am – 10:00pm</span></div>
+            <div class="location-day"><span class="location-day-name">Domingos</span><span class="location-day-time">8:00am – 6:00pm</span></div>
+          </div>
+          <div class="location-contact">
+            <a href="tel:8098979609"><span>Teléfono local</span>809-897-9609</a>
+            <a href="https://wa.me/18098979609" target="_blank" rel="noopener"><span>WhatsApp</span>809-897-9609</a>
+            <a href="https://www.facebook.com/michelinenailbar/" target="_blank" rel="noopener"><span>Facebook</span>@michelinenailbar</a>
+          </div>
+        </div>
+        <div class="location-card">
+          <span class="location-badge">Segunda Sucursal</span>
+          <h3 class="location-name">Boca Chica</h3>
+          <div class="location-hours">
+            <div class="location-day"><span class="location-day-name">Lunes – Viernes</span><span class="location-day-time">7:00am – 9:00pm</span></div>
+            <div class="location-day"><span class="location-day-name">Sábados</span><span class="location-day-time">8:00am – 8:00pm</span></div>
+            <div class="location-day"><span class="location-day-name">Domingos</span><span class="location-day-time">8:00am – 6:00pm</span></div>
+          </div>
+          <div class="location-contact">
+            <a href="https://wa.me/18098979609" target="_blank" rel="noopener"><span>WhatsApp</span>809-897-9609</a>
+            <a href="mailto:hola@michelinenailbar.com"><span>Correo electrónico</span>hola@michelinenailbar.com</a>
+            <a href="https://www.instagram.com/michelinenailbar/" target="_blank" rel="noopener"><span>Instagram</span>@michelinenailbar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARCAS -->
+    <section id="brands">
+      <div class="reveal" style="text-align:center;">
+        <p class="section-label">Calidad garantizada</p>
+        <h2 class="section-title">Marcas que <em>Confiamos</em></h2>
+        <div class="gold-divider" style="margin:2rem auto;"></div>
+        <p class="section-subtitle">Solo trabajamos con productos reconocidos de alta gama.</p>
+      </div>
+      <div class="brands-track-wrap">
+        <div class="brands-track">
+          <span class="brand-item">OPI</span>
+          <span class="brand-item">Alfaparf</span>
+          <span class="brand-item">Moroccan Oil</span>
+          <span class="brand-item">Gelish</span>
+          <span class="brand-item">Davines</span>
+          <span class="brand-item">Alter Ego</span>
+          <span class="brand-item">Morgan Taylor</span>
+          <span class="brand-item">Cuccio</span>
+          <span class="brand-item">Vitality's</span>
+          <span class="brand-item">Argan Oil</span>
+          <span class="brand-item">Sebastian</span>
+          <span class="brand-item">Fanola</span>
+          <span class="brand-item">Deya</span>
+          <!-- duplicado para loop infinito -->
+          <span class="brand-item">OPI</span>
+          <span class="brand-item">Alfaparf</span>
+          <span class="brand-item">Moroccan Oil</span>
+          <span class="brand-item">Gelish</span>
+          <span class="brand-item">Davines</span>
+          <span class="brand-item">Alter Ego</span>
+          <span class="brand-item">Morgan Taylor</span>
+          <span class="brand-item">Cuccio</span>
+          <span class="brand-item">Vitality's</span>
+          <span class="brand-item">Argan Oil</span>
+          <span class="brand-item">Sebastian</span>
+          <span class="brand-item">Fanola</span>
+          <span class="brand-item">Deya</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section id="team">
+      <div class="team-header reveal">
+        <p class="section-label">Conoce a nuestros especialistas</p>
+        <h2 class="section-title">Nuestro <em>Equipo</em></h2>
+        <div class="gold-divider" style="margin:2rem auto;"></div>
+        <p style="opacity:0.5;font-size:0.9rem;max-width:500px;margin:0 auto;">Elige a tu especialista favorito y agenda directamente con ella en el formulario a continuación.</p>
+      </div>
+      <div class="team-grid" id="teamGrid">
+        <!-- Renderizado dinámicamente -->
+      </div>
+    </section>
+
+    <!-- RESERVA -->
+    <section id="booking">
+      <div class="booking-inner">
+        <div class="booking-info reveal">
+          <p class="section-label">Agenda online</p>
+          <h2 class="section-title">Reserva tu<br/><em>Experiencia</em></h2>
+          <div class="gold-divider"></div>
+          <p class="booking-subtitle" style="opacity: 0.6; line-height: 1.8; margin-bottom: 2.5rem;">Agenda tu cita en segundos. Te confirmaremos por WhatsApp en menos de 1 hora para tu mayor comodidad.</p>
+          
+          <div class="booking-detail">
+            <span class="booking-detail-icon">📍</span>
+            <div class="booking-detail-text">
+              <strong>Sucursales Disponibles</strong>
+              San Pedro de Macorís · Boca Chica
+            </div>
+          </div>
+          <div class="booking-detail">
+            <span class="booking-detail-icon">📱</span>
+            <div class="booking-detail-text">
+              <strong>Asistencia San Pedro</strong>
+              <a href="https://wa.me/18098979609" style="color:var(--gold);text-decoration:none;">+(809) 897-9609</a>
+            </div>
+          </div>
+          <div class="booking-detail">
+            <span class="booking-detail-icon">📱</span>
+            <div class="booking-detail-text">
+              <strong>Asistencia Boca Chica</strong>
+              <a href="https://wa.me/18098979609" style="color:var(--gold);text-decoration:none;">+(809) 897-9609</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="booking-form reveal">
+          <form id="appointmentForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Nombre Completo</label>
+                <input type="text" id="name" name="name" placeholder="Ej. Ana Pérez" required/>
+              </div>
+              <div class="form-group">
+                <label for="phone">Teléfono / WhatsApp</label>
+                <input type="tel" id="phone" name="phone" placeholder="+1 (809) XXX-XXXX" required/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="branch">Sucursal</label>
+              <select id="branch" name="branch" required>
+                <option value="" disabled selected>Selecciona tu sucursal más cercana</option>
+                <option>San Pedro de Macorís</option>
+                <option>Boca Chica</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="service">Servicio Principal</label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>¿Qué te gustaría realizarte?</option>
+                <optgroup label="💅 Nail Bar">
+                  <option>Manicure Spa</option>
+                  <option>Pedi Spa 4 pasos</option>
+                  <option>Uñas Acrílicas</option>
+                  <option>Soft Gel Tips / Baby Boomer</option>
+                  <option>Pintura en Gel</option>
+                </optgroup>
+                <optgroup label="✂️ Peluquería">
+                  <option>Lavado y Peinado</option>
+                  <option>Corte y Secado</option>
+                  <option>Definición de rizos</option>
+                </optgroup>
+                <optgroup label="🌿 Otros">
+                  <option>Depilación con Cera</option>
+                  <option>Maquillaje o Facial</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="date">Fecha Preferida</label>
+                <input type="date" id="date" name="date" required/>
+              </div>
+              <div class="form-group">
+                <label for="time">Hora Aproximada</label>
+                <input type="time" id="time" name="time" min="09:00" max="19:00" required/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="notes">Notas o Consideraciones (Opcional)</label>
+              <textarea id="notes" name="notes" placeholder="¿Deseas agregar algún diseño especial o tienes alguna condición?"></textarea>
+            </div>
+            <button type="submit" class="form-submit">Generar Reserva vía WhatsApp →</button>
+            <p class="form-note">Serás redirigida a WhatsApp para enviar de forma segura los detalles de tu cita a nuestro asistente.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="gallery">
+      <div class="gallery-header reveal" style="text-align:center;">
+        <p class="section-label">Nuestro Trabajo</p>
+        <h2 class="section-title">La <em>Galería</em></h2>
+        <div class="gold-divider" style="margin:2rem auto;"></div>
+        <p class="section-subtitle" style="opacity:0.6;">Obras de arte creadas diariamente por nuestros talentosos especialistas.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item" loading="lazy">
+          <div class="gallery-placeholder">💅<span>Arte en Acrílico</span></div>
+        </div>
+        <div class="gallery-item"><div class="gallery-placeholder">✨</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">💎</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">🌸</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">💄</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">👑</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">🦋</div></div>
+      </div>
+      <div class="gallery-cta reveal" style="text-align:center; margin-top:3rem;">
+        <a href="https://www.instagram.com/michelinenailbar/" target="_blank" rel="noopener" class="btn-outline">Ver más inspiración en Instagram →</a>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section id="newsletter">
+      <div class="newsletter-inner reveal">
+        <p class="section-label">Sé parte del club</p>
+        <h2 class="section-title">Ofertas & <em>Novedades</em></h2>
+        <div class="gold-divider" style="margin:2rem auto;"></div>
+        <p style="opacity:0.6; margin-bottom:2rem;">Recibe promociones VIP de spa, tips de belleza y notificaciones de nuevos productos directamente en tu correo.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Ingresa tu correo electrónico" required aria-label="Correo electrónico" />
+          <button type="submit">Suscribirme Ahora</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- REDES SOCIALES -->
+    <section id="socials" class="socials-section">
+      <div class="socials-container reveal">
+        <div class="socials-header">
+          <p class="section-label">Síguenos en redes</p>
+          <h2 class="section-title">Conecta <em>con nosotras</em></h2>
+          <div class="rose-divider"></div>
+          <p class="socials-subtitle">Inspírate con nuestros diseños, tips de belleza y promociones exclusivas en todos nuestros canales.</p>
+        </div>
+        <div class="socials-grid">
+          <a href="https://www.instagram.com/michelinenailbar/" target="_blank" rel="noopener" class="social-card" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.facebook.com/michelinenailbar/" target="_blank" rel="noopener" class="social-card" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            <span>Facebook</span>
+          </a>
+          <a href="https://www.tiktok.com/@michelinenailbar" target="_blank" rel="noopener" class="social-card" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.66 1.94 2.89 2.89 0 0 1 5.66-1.94v-3.1a6.3 6.3 0 0 0-5.81 3.86 6.31 6.31 0 0 0 10.77-5.23V8.35a8.12 8.12 0 0 0 3.65.62V5.49a4.84 4.84 0 0 1-.88-.05z"/></svg>
+            <span>TikTok</span>
+          </a>
+          <a href="https://x.com/michelinenailbar" target="_blank" rel="noopener" class="social-card" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7.5.881 11-2.5a17.46 17.46 0 001-4c0-.342-.023-.684-.067-1.025A11.36 11.36 0 0023 3z"/></svg>
+            <span>X</span>
+          </a>
+          <a href="https://www.linkedin.com/company/micheline-nail-bar" target="_blank" rel="noopener" class="social-card" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.44-.103.25-.129.599-.129.948v5.417h-3.554s.05-8.787 0-9.7h3.554v1.373c.43-.664 1.199-1.608 2.894-1.608 2.111 0 3.694 1.405 3.694 4.431v5.504zM5.337 8.855c-1.144 0-1.915-.759-1.915-1.71 0-.953.77-1.71 1.963-1.71 1.193 0 1.915.757 1.915 1.71 0 .951-.722 1.71-1.963 1.71zm1.572 11.597H3.767V9.557h3.142v10.895zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://www.youtube.com/@michelinenailbar" target="_blank" rel="noopener" class="social-card" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <span>YouTube</span>
+          </a>
+          <a href="https://www.pinterest.com/michelinenailbar" target="_blank" rel="noopener" class="social-card" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.937-.2-2.378.042-3.415.217-.937 1.402-5.938 1.402-5.938s-.357-.715-.357-1.784c0-1.672.968-2.92 2.181-2.92 1.03 0 1.526.774 1.526 1.7 0 1.036-.659 2.59-.998 4.027-.284 1.194.597 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.48 0-2.864-2.057-4.87-4.993-4.87-3.404 0-5.407 2.553-5.407 5.195 0 1.028.327 2.128.73 2.726.08.14.092.26.069.403-.075.315-.245 1.029-.282 1.173-.047.198-.155.239-.357.144-1.986-.993-3.23-4.106-3.23-6.62 0-3.766 2.745-7.223 7.912-7.223 4.155 0 7.385 2.96 7.385 6.922 0 4.13-2.603 7.46-6.213 7.46-1.213 0-2.354-.635-2.748-1.383 0 0-.603 2.294-.748 2.858-.27 1.045-1.004 2.352-1.498 3.146 1.123.347 2.314.535 3.58.535 6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            <span>Pinterest</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="nav-logo">Micheline <span>Nail Bar</span></span>
+        <p>Creando experiencias de belleza y momentos de relajación inolvidables en San Pedro y Boca Chica para ti.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/michelinenailbar/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.facebook.com/michelinenailbar/" target="_blank" rel="noopener" aria-label="Facebook">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@michelinenailbar" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.66 1.94 2.89 2.89 0 0 1 5.66-1.94v-3.1a6.3 6.3 0 0 0-5.81 3.86 6.31 6.31 0 0 0 10.77-5.23V8.35a8.12 8.12 0 0 0 3.65.62V5.49a4.84 4.84 0 0 1-.88-.05z"/></svg>
+          </a>
+          <a href="https://x.com/michelinenailbar" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7.5.881 11-2.5a17.46 17.46 0 001-4c0-.342-.023-.684-.067-1.025A11.36 11.36 0 0023 3z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/micheline-nail-bar" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.44-.103.25-.129.599-.129.948v5.417h-3.554s.05-8.787 0-9.7h3.554v1.373c.43-.664 1.199-1.608 2.894-1.608 2.111 0 3.694 1.405 3.694 4.431v5.504zM5.337 8.855c-1.144 0-1.915-.759-1.915-1.71 0-.953.77-1.71 1.963-1.71 1.193 0 1.915.757 1.915 1.71 0 .951-.722 1.71-1.963 1.71zm1.572 11.597H3.767V9.557h3.142v10.895zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@michelinenailbar" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://www.pinterest.com/michelinenailbar" target="_blank" rel="noopener" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.937-.2-2.378.042-3.415.217-.937 1.402-5.938 1.402-5.938s-.357-.715-.357-1.784c0-1.672.968-2.92 2.181-2.92 1.03 0 1.526.774 1.526 1.7 0 1.036-.659 2.59-.998 4.027-.284 1.194.597 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.480 0-2.864-2.057-4.87-4.993-4.87-3.404 0-5.407 2.553-5.407 5.195 0 1.028.327 2.128.73 2.726.08.14.092.26.069.403-.075.315-.245 1.029-.282 1.173-.047.198-.155.239-.357.144-1.986-.993-3.23-4.106-3.23-6.62 0-3.766 2.745-7.223 7.912-7.223 4.155 0 7.385 2.96 7.385 6.922 0 4.13-2.603 7.46-6.213 7.46-1.213 0-2.354-.635-2.748-1.383 0 0-.603 2.294-.748 2.858-.27 1.045-1.004 2.352-1.498 3.146 1.123.347 2.314.535 3.58.535 6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#about">Nuestra Historia</a></li>
+          <li><a href="#services">Menú de Servicios</a></li>
+          <li><a href="#pricing">Tarifas y Precios</a></li>
+          <li><a href="#team">Los Especialistas</a></li>
+          <li><a href="#gallery">Galería de Trabajos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Términos y Condiciones</a></li>
+          <li><a href="#">Política de Cancelación</a></li>
+          <li><a href="#">Privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="currentYear"></span> Micheline Nail Bar. Todos los derechos reservados.</p>
+      <p>Diseñado para Brillar por Micheline AI.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
