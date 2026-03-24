@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const sendMessageToWA = (text) => {
     if (!text.trim()) return;
-    const phone = "18096277471";
+    const phone = "18098972565";
     const encoded = encodeURIComponent(text.trim());
     window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
     chatInput.value = '';
