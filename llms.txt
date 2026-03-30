@@ -1,0 +1,23 @@
+﻿# Micheline Nail Bar & Beauty Lounge
+
+## Descripción
+Salón de belleza premium en República Dominicana con sucursales en San Pedro de Macorís y Boca Chica.
+
+## Servicios
+- Nail Bar: Manicure (RD), Manicure Spa (RD), Pedi Spa 4 pasos (RD), Gel (RD)
+- Uñas Acrílicas: Francesas (RD), Baby Boomer (RD), Porcelanato (RD)
+- Peluquería: Lavado (RD), Corte (RD-1000), Rizos (RD)
+- Depilación: Cejas (RD), Brasileño (RD)
+- Maquillaje y faciales desde RD
+
+## Marcas
+OPI, Alfaparf, Moroccan Oil, Gelish, Davines, Sebastian, Fanola
+
+## Sucursales
+- San Pedro de Macorís: Lun-Vie 7am-11pm, Sáb 8am-10pm, Dom 8am-6pm. Tel: +1-809-246-5821
+- Boca Chica: Lun-Vie 7am-9pm, Sáb 8am-8pm, Dom 8am-6pm. WhatsApp: +1-829-823-3476
+
+## Contacto
+- Email: info@michelinenailbar.com
+- Instagram: @michelinenailbar
+- Web: https://micheline-nail-bar.vercel.app/
